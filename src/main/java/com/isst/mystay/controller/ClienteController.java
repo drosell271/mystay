@@ -15,8 +15,13 @@ public class ClienteController {
 	private ClienteService clienteService;
 
 	@PostMapping
-	public Cliente agregarCliente(@RequestBody Cliente cliente) {
-		return clienteService.guardarCliente(cliente);
+	public ResponseEntity<Cliente> agregarCliente(@RequestBody Cliente cliente) {
+		Cliente clienteGuardado = clienteService.guardarCliente(cliente);
+		if (clienteGuardado != null) {
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(clienteGuardado);
+		}
 	}
 
 	@GetMapping
@@ -27,13 +32,23 @@ public class ClienteController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Cliente> obtenerClientePorId(@PathVariable Long id) {
 		Cliente cliente = clienteService.obtenerClientePorId(id);
-		return ResponseEntity.ok(cliente);
+		if (cliente == null) {
+			return ResponseEntity.notFound().build();
+		}
+		{
+			return ResponseEntity.ok(cliente);
+		}
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Cliente> actualizarCliente(@PathVariable Long id, @RequestBody Cliente clienteDetalles) {
 		Cliente clienteActualizado = clienteService.actualizarCliente(id, clienteDetalles);
-		return ResponseEntity.ok(clienteActualizado);
+		if (clienteActualizado == null) {
+			return ResponseEntity.notFound().build();
+		}
+		{
+			return ResponseEntity.ok(clienteActualizado);
+		}
 	}
 
 	@DeleteMapping("/{id}")

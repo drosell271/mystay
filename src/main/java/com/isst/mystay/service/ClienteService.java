@@ -19,7 +19,7 @@ public class ClienteService {
 		if (cliente != null) {
 			return clienteRepository.save(cliente);
 		}
-		throw new IllegalArgumentException("El cliente no puede ser null");
+		return null;
 	}
 
 	public List<Cliente> obtenerTodosLosClientes() {
@@ -31,15 +31,15 @@ public class ClienteService {
 			if (clienteRepository.existsById(id)) {
 				return clienteRepository.findById(id).orElse(null);
 			} else {
-				throw new IllegalArgumentException("El cliente no existe");
+				return null;
 			}
 		}
-		throw new IllegalArgumentException("El ID no puede ser null");
+		return null;
 	}
 
 	public Cliente actualizarCliente(Long id, Cliente clienteDetalles) {
 		if (id == null || clienteDetalles == null) {
-			throw new IllegalArgumentException("El ID y los detalles del cliente no pueden ser null");
+			return null;
 		}
 
 		Optional<Cliente> clienteExistente = clienteRepository.findById(id);
@@ -54,7 +54,7 @@ public class ClienteService {
 			clienteActualizado.setEsPremium(clienteDetalles.isEsPremium());
 			return clienteRepository.save(clienteActualizado);
 		}
-		throw new IllegalArgumentException("El cliente no existe");
+		return null;
 	}
 
 	public boolean eliminarCliente(@Nullable Long id) {
@@ -63,9 +63,9 @@ public class ClienteService {
 				clienteRepository.deleteById(id);
 				return true;
 			} else {
-				throw new IllegalArgumentException("El cliente no existe");
+				return false;
 			}
 		}
-		throw new IllegalArgumentException("El ID no puede ser null");
+		return false;
 	}
 }
