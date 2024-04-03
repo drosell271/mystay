@@ -1,13 +1,12 @@
 import React from 'react';
-import { Header } from './Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 
 export const Login = () => {
     return (
         <div>
-            <Header />
             <div id='datosHabitacion'>
                 <div className='textoYinput'>
                     <label for="numHabitacion">Nº de Habitación:</label>
@@ -18,7 +17,7 @@ export const Login = () => {
                     <input type="text" id="dni-pp" placeholder='Ej: 12345678E'></input>
                 </div>
             </div>
-            <Button>Login</Button>
+            <Link to='/principal'><Button>Login</Button></Link>
 
         </div>
     )

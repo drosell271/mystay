@@ -14,11 +14,6 @@
   align-items: center;
 }
 
-label {
-  display: block;
-  margin: 0 auto;
-}
-
 .textoYinput {
   display: flex;
   flex-direction: column;
@@ -42,4 +37,13 @@ label {
   margin-top: 80px;
   margin-bottom: 70px;
   gap: 200px;
+}
+
+#botonesReserva {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 200px;
+  gap: 100px;
 }
