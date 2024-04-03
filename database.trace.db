@@ -1,0 +1,16 @@
+2024-04-03 10:52:17.170870+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HOTEL" no encontrada
+Table "HOTEL" not found; SQL statement:
+CREATE TABLE Habitacion (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    Numero INT,
+    TipoHabitacion VARCHAR(255),
+    NumeroCamas INT,
+    Precio DECIMAL,
+    HotelID BIGINT,
+    FOREIGN KEY (HotelID) REFERENCES Hotel(ID)
+) [42102-224]
+2024-04-03 11:01:52.452040+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "CLIENTES" no encontrada
+Table "CLIENTES" not found; SQL statement:
+UPDATE Clientes SET esPremium_temp = esPremium [42102-224]
