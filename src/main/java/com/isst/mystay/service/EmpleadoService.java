@@ -2,6 +2,9 @@ package com.isst.mystay.service;
 
 import com.isst.mystay.model.Empleado;
 import com.isst.mystay.repository.EmpleadoRepository;
+
+import io.micrometer.common.lang.Nullable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,15 +16,18 @@ public class EmpleadoService {
     @Autowired
     private EmpleadoRepository empleadoRepository;
 
-    public Empleado guardarEmpleado(Empleado empleado) {
-        return empleadoRepository.save(empleado);
+    public Empleado guardarEmpleado(@Nullable Empleado empleado) {
+        if (empleado != null) {
+            return empleadoRepository.save(empleado);
+        }
+        return null;
     }
 
     public List<Empleado> obtenerTodosLosEmpleados() {
         return empleadoRepository.findAll();
     }
 
-    public Empleado obtenerEmpleadoPorId(long id) {
+    public Empleado obtenerEmpleadoPorId(@Nullable long id) {
         Optional<Empleado> empleado = empleadoRepository.findById(id);
         return empleado.orElse(null);
     }

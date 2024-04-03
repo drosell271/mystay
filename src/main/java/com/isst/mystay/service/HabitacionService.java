@@ -2,6 +2,9 @@ package com.isst.mystay.service;
 
 import com.isst.mystay.model.Habitacion;
 import com.isst.mystay.repository.HabitacionRepository;
+
+import io.micrometer.common.lang.Nullable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,8 +16,11 @@ public class HabitacionService {
     @Autowired
     private HabitacionRepository habitacionRepository;
 
-    public Habitacion guardarHabitacion(Habitacion habitacion) {
-        return habitacionRepository.save(habitacion);
+    public Habitacion guardarHabitacion(@Nullable Habitacion habitacion) {
+        if (habitacion != null) {
+            return habitacionRepository.save(habitacion);
+        }
+        return null;
     }
 
     public List<Habitacion> obtenerTodasLasHabitaciones() {

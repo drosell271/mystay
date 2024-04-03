@@ -1,7 +1,7 @@
 package com.isst.mystay.service;
 
 import com.isst.mystay.model.Hotel;
-import com.isst.mystay.repository.HotelddRepository;
+import com.isst.mystay.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.springframework.lang.Nullable;
 public class HotelService {
 
 	@Autowired
-	private HotelddRepository HotelRepository;
+	private HotelRepository HotelRepository;
 
 	public Hotel guardarHotel(@Nullable Hotel Hotel) {
 		if (Hotel != null) {
