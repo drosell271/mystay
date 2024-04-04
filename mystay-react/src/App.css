@@ -73,3 +73,9 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
+
+.fotos{
+  width: 100px;
+  height: 100px;
+}

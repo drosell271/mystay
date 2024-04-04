@@ -6,12 +6,14 @@ import { Link } from 'react-router-dom';
 const Confort = () => {
   return (
     <div>
-      {/* <img className="almohada" src="./logoilt1.png" alt="imagenalmohada"/> */}
-      <h2>Solicitar almohada</h2>
-      {/* <img className="ropacama" src="./logoilt1.png" alt="imagenropacama"/> */}
-      <h2>Ropa de cama</h2>
-      {/* <img className="productosbaño" src="./logoilt1.png" alt="imagenproductosbaño"/> */}
-      <h2>Productos de baño</h2>
+      <div id='iconosconfort'>
+        <img className="fotos" src="./almohada.png" alt="imagenalmohada"/>
+        <h2>Solicitar almohada</h2>
+        <img className="fotos" src="./ropacama.png" alt="imagenropacama"/>
+        <h2>Ropa de cama</h2>
+        <img className="fotos" src="./productosbaño.png" alt="imagenproductosbaño"/> 
+        <h2>Productos de baño</h2>
+      </div>
       <div><Link to='/habitacion'><Button className='atras' variant="dark">Atrás</Button></Link></div>
     </div>
   )
