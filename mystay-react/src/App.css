@@ -73,3 +73,29 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
+#botonEditar {
+  margin-bottom: 20px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+.ordenados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  gap: 20px;
+}
+
+#incidencias {
+  width: 500px;
+  height: 100px;
+}

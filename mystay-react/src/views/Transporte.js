@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const Transporte = () => {
   return (
     <div>
+      <div className='menu'>
         {/* <img className="uber" src="./logoilt1.png" alt="imagenalmohada"/> */}
         <h2>Uber</h2>
         {/* <img className="cabify" src="./logoilt1.png" alt="imagenropacama"/> */}
@@ -16,7 +17,8 @@ const Transporte = () => {
         <h2>Transporte privado</h2>
         {/* <img className="billetes" src="./logoilt1.png" alt="imagenproductosbaño"/> */}
         <h2>Billetes</h2>
-        <div><Link to='/principal'><Button className='atras' variant="dark">Atrás</Button></Link></div>
+      </div>
+      <Link to='/principal'><Button className='atras' variant="dark">Volver</Button></Link>
     </div>
   )
 }

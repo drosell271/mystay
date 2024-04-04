@@ -12,6 +12,7 @@ import Habitacion from './views/Habitacion';
 import Incidencias from './views/Incidencias';
 import Perfil from './views/Perfil';
 import Transporte from './views/Transporte';
+import { Editar } from './views/Editar';
 
 
 function App() {
@@ -24,14 +25,15 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/principal' element={<Principal />} />
           <Route path='/reservas' element={<Reservas />} />
-          <Route path='/nuevareserva' element={<NuevaReserva />} />
-          <Route path='/checkout' element={<CheckOut />} />
-          <Route path='/cafeteria' element={<Cafeteria />} />
-          <Route path='/confort' element={<Confort />} />
+          <Route path='/reservas/nuevareserva' element={<NuevaReserva />} />
+          <Route path='/reservas/checkout' element={<CheckOut />} />
+          <Route path='/habitacion/cafeteria' element={<Cafeteria />} />
+          <Route path='/habitacion/confort' element={<Confort />} />
           <Route path='/habitacion' element={<Habitacion />} />
-          <Route path='/incidencias' element={<Incidencias />} />
+          <Route path='/habitacion/incidencias' element={<Incidencias />} />
           <Route path='/perfil' element={<Perfil />} />
           <Route path='/transporte' element={<Transporte />} />
+          <Route path='/perfil/editar' element={<Editar />} />
         </Routes>
       </div>
     </BrowserRouter>
