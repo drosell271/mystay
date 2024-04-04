@@ -2,9 +2,19 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 
 export const Login = () => {
+
+    const [NumHabitacion, setNumHabitacion] = useState(0);
+    const [dni, setDni] = useState(0);
+
+    const manejaLogin = () => {
+        setNumHabitacion(document.getElementById('numHabitacion').value);
+        setDni(document.getElementById('dni-pp').value);
+    }
+
     return (
         <div>
             <div id='datosHabitacion'>
@@ -17,7 +27,7 @@ export const Login = () => {
                     <input type="text" id="dni-pp" placeholder='Ej: 12345678E'></input>
                 </div>
             </div>
-            <Link to='/principal'><Button>Login</Button></Link>
+            <Link to='/principal'><Button onClick={() => manejaLogin()}>Login</Button></Link>
         </div>
     )
 }

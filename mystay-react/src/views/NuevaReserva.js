@@ -11,7 +11,12 @@ export const NuevaReserva = () => {
     const PrecioPremium = 120;
 
     const [tipoHabitacion, setTipoHabitacion] = useState('estandar');
-    const [numPersonas, setNumPersonas] = useState('0');
+    const [numPersonas, setNumPersonas] = useState(0);
+
+    // Variables que guardan la fecha de entrada y salida (para el PMD)
+    // Se guardan como un String del estilo: '2024-04-25'
+    const [fechaEntrada, setFechaEntrada] = useState(0);
+    const [fechaSalida, setFechaSalida] = useState(0);
 
     return (
         <div>
@@ -19,11 +24,11 @@ export const NuevaReserva = () => {
                 <div className='filaDe2'>
                     <div className='textoYinput'>
                         <label for='fechaEntrada'>Fecha de Entrada:</label>
-                        <input type='date'></input>
+                        <input type='date' onChange={e => setFechaEntrada(e.target.value)}></input>
                     </div>
                     <div className='textoYinput'>
                         <label for='fechaSalida'>Fecha de Salida:</label>
-                        <input type='date'></input>
+                        <input type='date' onChange={e => setFechaSalida(e.target.value)}></input>
                     </div>
                 </div>
                 <div className='filaDe2'>

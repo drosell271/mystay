@@ -7,9 +7,10 @@ export const CheckOut = () => {
     return (
         <div>
             <div id='recibo'>
-                <h2>Recibo:</h2>
+                <h2><u>Recibo</u></h2>
                 <p>Coste de la habitación:</p>
                 <p>Servicios contratados:</p>
+                <h3>Total:</h3>
             </div>
 
             <div id='despedida'>
