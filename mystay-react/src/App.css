@@ -18,8 +18,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
-
 
 #datosHabitacion {
   display: flex;
@@ -44,6 +44,32 @@
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
   gap: 100px;
+}
+
+#recibo {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+#despedida {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#checkIn {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  gap: 90px;
+}
+
+.filaDe2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

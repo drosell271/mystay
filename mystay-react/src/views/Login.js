@@ -18,7 +18,6 @@ export const Login = () => {
                 </div>
             </div>
             <Link to='/principal'><Button>Login</Button></Link>
-
         </div>
     )
 }
