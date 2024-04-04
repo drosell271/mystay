@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom';
 const Confort = () => {
   return (
     <div>
-      <div className='ordenados'>
-        {/* <img className="almohada" src="./logoilt1.png" alt="imagenalmohada"/> */}
-        <Button>Solicitar almohada</Button>
-        {/* <img className="ropacama" src="./logoilt1.png" alt="imagenropacama"/> */}
-        <Button>Ropa de cama</Button>
-        {/* <img className="productosbaño" src="./logoilt1.png" alt="imagenproductosbaño"/> */}
-        <Button>Productos de baño</Button>
-        <div><Link to='/habitacion'><Button className='atras' variant="dark">Volver</Button></Link></div>
+      <div id='iconosconfort'>
+        <img className="fotos" src="../almohada.png" alt="imagenalmohada" />
+        <h2>Solicitar almohada</h2>
+        <img className="fotos" src="../ropacama.png" alt="imagenropacama" />
+        <h2>Ropa de cama</h2>
+        <img className="fotos" src="../productosbaño.png" alt="imagenproductosbaño" />
+        <h2>Productos de baño</h2>
       </div>
+      <div><Link to='/habitacion'><Button className='atras' variant="dark">Atrás</Button></Link></div>
     </div>
   )
 }
