@@ -2,6 +2,7 @@ import React from 'react'
 import Form from 'react-bootstrap/Form';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
+import { Link } from 'react-router-dom';
 
 const Incidencias = () => {
   return (
@@ -20,7 +21,7 @@ const Incidencias = () => {
           placeholder="Escriba aquí la incidencia"
         /> 
         <Button className='enviar' variant="dark">Enviar</Button>
-        <Button className='atras' variant="dark">Atrás</Button>
+        <Link to='/habitacion'><Button className='atras' variant="dark">Atrás</Button></Link>
     </div>
   )
 }

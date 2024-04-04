@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from 'react-router-dom';
 
 const Confort = () => {
   return (
@@ -11,7 +12,7 @@ const Confort = () => {
       <h2>Ropa de cama</h2>
       {/* <img className="productosbaño" src="./logoilt1.png" alt="imagenproductosbaño"/> */}
       <h2>Productos de baño</h2>
-      <div><Button className='atras' variant="dark">Atrás</Button></div>
+      <div><Link to='/habitacion'><Button className='atras' variant="dark">Atrás</Button></Link></div>
     </div>
   )
 }
