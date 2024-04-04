@@ -33,7 +33,7 @@ export const NuevaReserva = () => {
                 </div>
                 <div className='filaDe2'>
                     <Dropdown>
-                        <Dropdown.Toggle>
+                        <Dropdown.Toggle variant='dark'>
                             Tipo de Habitación
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
@@ -42,7 +42,7 @@ export const NuevaReserva = () => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
-                        <Dropdown.Toggle>
+                        <Dropdown.Toggle variant='dark'>
                             Número de personas
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
@@ -59,7 +59,7 @@ export const NuevaReserva = () => {
                     <h2>Precio: {tipoHabitacion === 'estandar' ? (PrecioEstandar * numPersonas) : (PrecioPremium * numPersonas)} €</h2>
                     <Button variant='success'>Confirmar Reserva</Button>
                 </div>
-                <Link to='/reservas'><Button>Volver</Button></Link>
+                <Link to='/reservas'><Button variant='dark'>Volver</Button></Link>
             </div>
         </div>
     )

@@ -1,5 +1,10 @@
+html {
+  background-color: rgb(226, 226, 162);
+}
+
 .App {
   text-align: center;
+  background-color: rgb(226, 226, 162);
 }
 
 .header {
@@ -12,6 +17,11 @@
   gap: 50px;
   justify-content: center;
   align-items: center;
+}
+
+#logo {
+  height: 80px;
+  width: 330px;
 }
 
 .textoYinput {
@@ -108,4 +118,10 @@
 .fotos {
   width: 100px;
   height: 100px;
+}
+
+input[type="text"] {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 5px;
 }

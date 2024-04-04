@@ -3,7 +3,7 @@ import React from 'react'
 export const Header = () => {
     return (
         <div className='header'>
-            <h1>MyStay</h1>
+            <img id='logo' src='../logomystay.png' alt='MyStay' />
         </div>
     )
 }

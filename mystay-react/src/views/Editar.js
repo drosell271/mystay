@@ -14,30 +14,30 @@ export const Editar = () => {
                 <div className='textoYinput'>
                     <label for='editaNombre'>Nombre:</label>
                     <input id='editaNombre' type='text'></input>
-                    <Button variant='warning'>Confirmar</Button>
+                    <Button variant='dark'>Confirmar</Button>
                 </div>
                 <div className='textoYinput'>
                     <label for='editaApellidos'>Apellidos:</label>
                     <input id='editaApellidos' type='text'></input>
-                    <Button variant='warning'>Confirmar</Button>
+                    <Button variant='dark'>Confirmar</Button>
                 </div>
                 <div className='textoYinput'>
                     <label for='editaTlf'>Teléfono:</label>
                     <input id='editaTlf' type='text'></input>
-                    <Button variant='warning'>Confirmar</Button>
+                    <Button variant='dark'>Confirmar</Button>
                 </div>
                 <div className='textoYinput'>
                     <label for='editaEmail'>Email:</label>
                     <input id='editaEmail' type='text'></input>
-                    <Button variant='warning'>Confirmar</Button>
+                    <Button variant='dark'>Confirmar</Button>
                 </div>
                 <div className='textoYinput'>
                     <label for='editaDni'>DNI/pasaporte:</label>
                     <input id='editaDni' type='text'></input>
-                    <Button variant='warning'>Confirmar</Button>
+                    <Button variant='dark'>Confirmar</Button>
                 </div>
             </div>
-            <Link to='/perfil'><Button>Volver</Button></Link>
+            <Link to='/perfil'><Button variant='dark'>Volver</Button></Link>
         </div>
     )
 }

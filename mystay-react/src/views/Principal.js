@@ -36,7 +36,7 @@ export const Principal = () => {
                     <h2>Transporte</h2>
                 </div>
             </div>
-            <Link to='/login'><Button>Logout</Button></Link>
+            <Link to='/login'><Button variant='dark'>Logout</Button></Link>
         </div>
     )
 }

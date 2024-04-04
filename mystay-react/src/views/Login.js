@@ -54,15 +54,15 @@ export const Login = () => {
         <div>
             <div id='datosHabitacion'>
                 <div className='textoYinput'>
-                    <label for="numHabitacion">Nº de Habitación:</label>
+                    <b><label for="numHabitacion">Nº de Habitación:</label></b>
                     <input type="text" id="numHabitacion" placeholder='Ej: 120'></input>
                 </div>
                 <div className='textoYinput'>
-                    <label for="dni-pp">DNI o Pasaporte:</label>
+                    <b><label for="dni-pp">DNI o Pasaporte:</label></b>
                     <input type="text" id="dni-pp" placeholder='Ej: 12345678E'></input>
                 </div>
             </div>
-            <Link to={loginCorrecto ? '/principal' : '/login'}><Button onClick={() => manejaLogin()}>Login</Button ></Link>
+            <Link to={loginCorrecto ? '/principal' : '/login'}><Button variant='dark' onClick={() => manejaLogin()}>Login</Button ></Link>
         </div >
     )
 }
