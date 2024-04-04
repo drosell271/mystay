@@ -54,7 +54,10 @@ export const NuevaReserva = () => {
                     </Dropdown>
                 </div>
                 <div>
+                    <h5>Habitación: {tipoHabitacion.toUpperCase()}</h5>
+                    <h5>Número de personas: {numPersonas}</h5>
                     <h2>Precio: {tipoHabitacion === 'estandar' ? (PrecioEstandar * numPersonas) : (PrecioPremium * numPersonas)} €</h2>
+                    <Button variant='success'>Confirmar Reserva</Button>
                 </div>
                 <Link to='/reservas'><Button>Volver</Button></Link>
             </div>

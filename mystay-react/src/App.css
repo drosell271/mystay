@@ -35,8 +35,8 @@
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 80px;
-  margin-bottom: 70px;
-  gap: 200px;
+  margin-bottom: 50px;
+  gap: 70px;
 }
 
 #botonesReserva {
@@ -98,4 +98,9 @@
 #incidencias {
   width: 500px;
   height: 100px;
+}
+
+.iconoMenuPrincipal {
+  height: 150px;
+  width: 150px;
 }
