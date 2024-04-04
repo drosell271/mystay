@@ -10,7 +10,7 @@ export const Principal = () => {
             <div id='iconosPrincipal'>
                 <Link to='/perfil' >
                     <div>
-                        <img src='../icono_perfil.jpg' alt='PERFIL' className='iconoMenuPrincipal' />
+                        <img src='../icono_perfil.png' alt='PERFIL' className='iconoMenuPrincipal' />
                         <p>Perfil</p>
                     </div>
                 </Link>
