@@ -6,17 +6,27 @@ import { Link } from 'react-router-dom';
 const Transporte = () => {
   return (
     <div>
-      <div className='menu'>
-        {/* <img className="uber" src="./logoilt1.png" alt="imagenalmohada"/> */}
-        <h2>Uber</h2>
-        {/* <img className="cabify" src="./logoilt1.png" alt="imagenropacama"/> */}
-        <h2>Cabify</h2>
-        {/* <img className="taxi" src="./logoilt1.png" alt="imagenproductosbaño"/> */}
-        <h2>Taxi</h2>
-        {/* <img className="transportepriv" src="./logoilt1.png" alt="imagenproductosbaño"/> */}
-        <h2>Transporte privado</h2>
-        {/* <img className="billetes" src="./logoilt1.png" alt="imagenproductosbaño"/> */}
-        <h2>Billetes</h2>
+      <div id='iconostransporte'>
+        <div>
+          <img className="fotos" src="../uber.png" alt="imagenuber"/>
+          <h2>Uber</h2>
+        </div>
+        <div>
+          <img className="fotos" src="../cabify.png" alt="imagencabify"/>
+          <h2>Cabify</h2>
+        </div>
+        <div>
+          <img className="fotos" src="../taxi.png" alt="imagentaxi"/>
+          <h2>Taxi</h2>
+        </div>
+        <div>
+          <img className="fotos" src="../transportepriv.png" alt="imagentransportepriv"/>
+          <h2>Transporte <br/> privado</h2>
+        </div>
+        <div>
+          <img className="fotos" src="../billetes.png" alt="imagenbilletes"/>
+          <h2>Billetes</h2>
+        </div>
       </div>
       <Link to='/principal'><Button className='atras' variant="dark">Volver</Button></Link>
     </div>
