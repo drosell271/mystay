@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Cafeteria = () => {
   return (
-    <div>
+    <div className='ordenados'>
       <img className="fotos" src="../comida.png" alt="imagencomida" />
       <h2>Comida</h2>
       <img className="fotos" src="../bebida.png" alt="imagenbebida" />

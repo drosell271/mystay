@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Confort = () => {
   return (
     <div>
-      <div id='iconosconfort'>
+      <div id='iconosconfort' className='ordenados'>
         <img className="fotos" src="../almohada.png" alt="imagenalmohada" />
         <h2>Solicitar almohada</h2>
         <img className="fotos" src="../ropacama.png" alt="imagenropacama" />
