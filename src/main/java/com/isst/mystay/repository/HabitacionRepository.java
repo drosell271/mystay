@@ -7,5 +7,3 @@ import java.util.List;
 public interface HabitacionRepository extends JpaRepository<Habitacion, Long> {
     List<Habitacion> findByHotelId(long hotelId);
 }
-
-
