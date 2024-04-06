@@ -9,8 +9,10 @@ export const Login = () => {
 
     // VARIABLES DE ESTADO
     const [loginCorrecto, setLoginCorrecto] = useState(true); // PONERLO A FALSE CUANDO ESTÉ LISTO PARA COMPROBAR USUARIOS
-    const [NumHabitacion, setNumHabitacion] = useState(0);
+    const [numHabitacion, setNumHabitacion] = useState(0);
     const [documento, setDocumento] = useState(0);
+    const [error, setError] = useState("");
+    const [hayError, setHayError] = useState(false);
 
 
     const manejaLogin = () => {
@@ -22,32 +24,36 @@ export const Login = () => {
 
 
     // CONSULTA A LA API
+    const handleSubmit = async (e) => {
+        const url = "http://localhost:8080/login";
 
-    const url = 'http://localhost:8080/login';
+        e.preventDefault();
 
-    const data = {
-        documento: `${documento}`,
-        NumHabitacion: `${NumHabitacion}`
-    };
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ documento, numHabitacion }),
 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    };
-    fetch(url, options)
-        .then((response) => {
+            });
+
+            const data = await response.json();
+
             if (response.ok) {
-                console.log('Usuario correcto');
+                localStorage.setItem("token", data.token);
+                setLoginCorrecto(true);
             } else {
-                console.log('Error en los datos', response.statusText);
+                setError(data.detail || "Error de autenticación");
+                setHayError(true);
             }
-        })
-        .catch((error) => {
-            console.log('Error al enviar la solicitud:', error.message);
-        });
+        } catch (error) {
+            setError("Error de login");
+            setHayError(true);
+        }
+    };
+
 
     // VISTA
     return (
@@ -62,6 +68,8 @@ export const Login = () => {
                     <input type="text" id="dni-pp" placeholder='Ej: 12345678E'></input>
                 </div>
             </div>
+            {/* mostrar el error en pantalla */}
+            <div>{hayError ? () => { setTimeout(error, 4000) } : ""}</div>
             <Link to={loginCorrecto ? '/principal' : '/login'}><Button variant='dark' onClick={() => manejaLogin()}>Login</Button ></Link>
         </div >
     )
