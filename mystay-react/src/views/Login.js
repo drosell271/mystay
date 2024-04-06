@@ -12,9 +12,9 @@ export const Login = () => {
     const [numHabitacion, setNumHabitacion] = useState(0);
     const [documento, setDocumento] = useState(0);
     const [error, setError] = useState("");
-    const [hayError, setHayError] = useState(false);
 
 
+    // FUNCIONES
     const manejaLogin = () => {
         setNumHabitacion(document.getElementById('numHabitacion').value);
         setDocumento(document.getElementById('dni-pp').value);
@@ -23,7 +23,18 @@ export const Login = () => {
         handleSubmit();
     }
 
-    // Habra que tener una funcion que compruebe si NumHabitacion está asociada al dni y en ese caso: setLoginCorrecto(true)
+
+    function mostrarError(error) {
+        const divError = document.getElementById('msgError');
+        divError.textContent = error;
+        divError.style.display = 'block';
+
+        // Oculta el mensaje de error después de 2 segundos
+        setTimeout(() => {
+            divError.style.display = 'none';
+        }, 2000);
+    }
+
 
 
     // CONSULTA A LA API
@@ -48,11 +59,10 @@ export const Login = () => {
 
             } else {
                 setError(data.detail || "Error de autenticación");
-                setHayError(true);
             }
         } catch (error) {
-            setError("Error de login");
-            setHayError(true);
+            setError("Error al conectar con el servidor");
+            console.log("HOLAAAA");
         }
     };
 
@@ -71,8 +81,9 @@ export const Login = () => {
                 </div>
             </div>
             {/* mostrar el error en pantalla */}
-            <div>{hayError ? () => { setTimeout(error, 4000) } : ""}</div>
-            <Button variant='dark' onClick={() => manejaLogin()}>Login</Button>
+            <div id="msgError"></div>
+
+            <Button variant='dark' onClick={() => { manejaLogin(); mostrarError(error) }}>Login</Button>
         </div>
     )
 }
