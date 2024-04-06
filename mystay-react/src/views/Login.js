@@ -59,10 +59,12 @@ export const Login = () => {
 
             } else {
                 setError(data.detail || "Error de autenticación");
+                mostrarError(error);
+
             }
         } catch (error) {
             setError("Error al conectar con el servidor");
-            console.log("HOLAAAA");
+            mostrarError(error);
         }
     };
 
@@ -83,7 +85,7 @@ export const Login = () => {
             {/* mostrar el error en pantalla */}
             <div id="msgError"></div>
 
-            <Button variant='dark' onClick={() => { manejaLogin(); mostrarError(error) }}>Login</Button>
+            <Button variant='dark' onClick={() => manejaLogin()}>Login</Button>
         </div>
     )
 }
