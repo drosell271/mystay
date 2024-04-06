@@ -135,3 +135,9 @@ input[type="text"] {
   margin-bottom: 50px;
   gap: 70px;
 }
+
+.botontr{
+  border-radius: 50%;
+  background-color: transparent;
+  border-color: transparent;
+}
