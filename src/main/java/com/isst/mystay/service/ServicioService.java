@@ -1,7 +1,11 @@
 package com.isst.mystay.service;
 
 import com.isst.mystay.model.Servicio;
+import com.isst.mystay.model.Recurso;
+import com.isst.mystay.model.Empleado;
 import com.isst.mystay.repository.ServicioRepository;
+import com.isst.mystay.repository.RecursoRepository;
+import com.isst.mystay.repository.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,23 +17,45 @@ import org.springframework.lang.Nullable;
 public class ServicioService {
 
 	@Autowired
-	private ServicioRepository ServicioRepository;
+	private ServicioRepository servicioRepository;
+
+	@Autowired
+	private RecursoRepository recursoRepository;
 
 	public Servicio guardarServicio(@Nullable Servicio Servicio) {
 		if (Servicio != null) {
-			return ServicioRepository.save(Servicio);
+			String temp = checkPMS(Servicio.getRecursoNecesario(), Servicio.getTipoEmpleado())
+			if (temp != null){
+				List<Recurso> recursos = recursoRepository.findAll();
+				Recurso recurso = recursos.stream()
+						.filter(c -> c.getNombre().equals(Servicio.getRecursoNecesario()))
+						.findFirst()
+						.orElse(null);
+				
+				List<Empleado> empleados = empleadoRepository.findAll();
+				Empleado empleado = empleados.stream()
+						.filter(c -> c.getNombre().equals(temp))
+						.findFirst()
+						.orElse(null);
+
+				if (recursos == null || empleado == null)
+					return null;
+				
+				return servicioRepository.save(Servicio);
+			}
+			return null;
 		}
 		return null;
 	}
 
 	public List<Servicio> obtenerTodosLosServicios() {
-		return ServicioRepository.findAll();
+		return servicioRepository.findAll();
 	}
 
 	public Servicio obtenerServicioPorId(@Nullable Long id) {
 		if (id != null) {
-			if (ServicioRepository.existsById(id)) {
-				return ServicioRepository.findById(id).orElse(null);
+			if (servicioRepository.existsById(id)) {
+				return servicioRepository.findById(id).orElse(null);
 			} else {
 				return null;
 			}
@@ -42,7 +68,7 @@ public class ServicioService {
 			return null;
 		}
 
-		Optional<Servicio> ServicioExistente = ServicioRepository.findById(id);
+		Optional<Servicio> ServicioExistente = servicioRepository.findById(id);
 
 		if (ServicioExistente.isPresent()) {
 			Servicio ServicioActualizado = ServicioExistente.get();
@@ -59,15 +85,15 @@ public class ServicioService {
 			ServicioActualizado.setIdRecurso(ServicioDetalles.getIdRecurso());
 			ServicioActualizado.setIdEmpleado(ServicioDetalles.getIdEmpleado());
 
-			return ServicioRepository.save(ServicioActualizado);
+			return servicioRepository.save(ServicioActualizado);
 		}
 		return null;
 	}
 
 	public boolean eliminarServicio(@Nullable Long id) {
 		if (id != null) {
-			if (ServicioRepository.existsById(id)) {
-				ServicioRepository.deleteById(id);
+			if (servicioRepository.existsById(id)) {
+				servicioRepository.deleteById(id);
 				return true;
 			} else {
 				return false;
