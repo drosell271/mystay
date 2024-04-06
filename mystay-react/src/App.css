@@ -136,8 +136,13 @@ input[type="text"] {
   gap: 70px;
 }
 
-.botontr{
+.botontr {
   border-radius: 50%;
   background-color: transparent;
   border-color: transparent;
+}
+
+#msgError {
+  margin-bottom: 20px;
+  color: red;
 }
