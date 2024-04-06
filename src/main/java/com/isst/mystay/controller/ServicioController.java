@@ -15,12 +15,12 @@ public class ServicioController {
 	private ServicioService ServicioService;
 
 	@PostMapping
-	public ResponseEntity<Servicio> agregarServicio(@RequestBody Servicio Servicio) {
-		Servicio ServicioGuardado = ServicioService.guardarServicio(Servicio);
-		if (ServicioGuardado != null) {
-			return ResponseEntity.notFound().build();
+	public ResponseEntity<Servicio> agregarServicio(@RequestBody Servicio servicio) {
+		Servicio servicioGuardado = ServicioService.guardarServicio(servicio);
+		if (servicioGuardado == null) {
+			return ResponseEntity.badRequest().build();
 		} else {
-			return ResponseEntity.ok(ServicioGuardado);
+			return ResponseEntity.ok(servicioGuardado);
 		}
 	}
 

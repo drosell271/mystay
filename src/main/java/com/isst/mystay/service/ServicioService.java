@@ -9,7 +9,6 @@ import com.isst.mystay.repository.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,36 +18,39 @@ import org.springframework.lang.Nullable;
 public class ServicioService {
 
 	@Autowired
-<<<<<<< HEAD
-
-
-	private ServicioRepository ServicioRepository;
-=======
 	private ServicioRepository servicioRepository;
 
 	@Autowired
 	private RecursoRepository recursoRepository;
->>>>>>> 53a14df68fdbfccb0dc6fc09d79392eeb659a322
+
+	@Autowired
+	private EmpleadoRepository empleadoRepository;
 
 	public Servicio guardarServicio(@Nullable Servicio Servicio) {
+		PMSService pmsService = new PMSService();
+
+		System.out.println("Por aca");
 		if (Servicio != null) {
-			String temp = checkPMS(Servicio.getRecursoNecesario(), Servicio.getTipoEmpleado())
-			if (temp != null){
+			System.out.println("Por aca");
+			String temp = pmsService.checkPMS(Servicio.getRecursoNecesario(), Servicio.getTipoEmpleado());
+			System.out.println(temp);
+			if (temp != null) {
+				System.out.println("Aqui 1");
 				List<Recurso> recursos = recursoRepository.findAll();
 				Recurso recurso = recursos.stream()
 						.filter(c -> c.getNombre().equals(Servicio.getRecursoNecesario()))
 						.findFirst()
 						.orElse(null);
-				
+
 				List<Empleado> empleados = empleadoRepository.findAll();
 				Empleado empleado = empleados.stream()
 						.filter(c -> c.getNombre().equals(temp))
 						.findFirst()
 						.orElse(null);
 
-				if (recursos == null || empleado == null)
+				if (recurso == null || empleado == null)
 					return null;
-				
+
 				return servicioRepository.save(Servicio);
 			}
 			return null;
@@ -109,5 +111,5 @@ public class ServicioService {
 		}
 		return false;
 	}
-	
+
 }
