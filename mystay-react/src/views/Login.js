@@ -18,6 +18,9 @@ export const Login = () => {
     const manejaLogin = () => {
         setNumHabitacion(document.getElementById('numHabitacion').value);
         setDocumento(document.getElementById('dni-pp').value);
+
+        //lamada a la API
+        handleSubmit();
     }
 
     // Habra que tener una funcion que compruebe si NumHabitacion está asociada al dni y en ese caso: setLoginCorrecto(true)
