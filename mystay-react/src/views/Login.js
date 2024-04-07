@@ -48,7 +48,10 @@ export const Login = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ documento, numHabitacion }),
+                body: JSON.stringify({
+                    "documento": documento,
+                    "numHabitaciones": numHabitacion
+                }),
 
             });
 

@@ -14,15 +14,15 @@ const Transporte = () => {
 
     setTipoTransporte(tipoServicio);
     handleSubmit();
-    if (tipoServicio !== ("Cabify" || "Uber")) {
-      alert(`Ha solicitado servicio de: ${tipoServicio}`);
-    }
   }
 
 
   // CONSULTA A LA API
   const handleSubmit = async (e) => {
     const url = "http://localhost:8080/servicios";
+
+    const idReserva = localStorage.getItem("token");
+
 
     try {
       const response = await fetch(url, {
@@ -41,15 +41,19 @@ const Transporte = () => {
           "satisfecho": false,
           "idEmpleado": null,
           "idRecurso": null,
-          "idReserva": null
+          "idReserva": idReserva
         }),
 
       });
 
-      const data = await response.json();
+      // const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.token);
+        // localStorage.setItem("token", data.token);
+        if (tipoServicio !== ("Cabify" || "Uber")) {
+          alert(`Ha solicitado servicio de: ${tipoServicio}`);
+        }
+
         if (tipoTransporte === "Uber") {
           window.location.href = "https://www.uber.com/es/es-es/";
         } else if (tipoTransporte === "Cabify") {

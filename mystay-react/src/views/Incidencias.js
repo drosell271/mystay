@@ -10,7 +10,6 @@ const Incidencias = () => {
 
   const gestionaIncidencias = () => {
     if (incidencia !== "") {
-      alert("Su incidencia ha sido enviada y pronto será evaluada");
       handleSubmit();
     } else {
       alert("Por favor, escriba su incidencia");
@@ -20,6 +19,9 @@ const Incidencias = () => {
   // CONSULTA A LA API
   const handleSubmit = async (e) => {
     const url = "http://localhost:8080/servicios";
+
+    const idReserva = localStorage.getItem("token");
+
 
     try {
       const response = await fetch(url, {
@@ -38,15 +40,16 @@ const Incidencias = () => {
           "satisfecho": false,
           "idEmpleado": null,
           "idRecurso": null,
-          "idReserva": null
+          "idReserva": idReserva
         }),
 
       });
 
-      const data = await response.json();
+      // const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.token);
+        // localStorage.setItem("token", data.token);
+        alert("Su incidencia ha sido enviada y pronto será evaluada");
 
       } else {
         console.log(data.detail || "Error de autenticación");

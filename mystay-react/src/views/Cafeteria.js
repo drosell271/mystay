@@ -21,13 +21,15 @@ const Cafeteria = () => {
     }
 
     handleSubmit();
-    alert(`Ha solicitado: ${tipoServicio}.\nVendrá un camarero a atenderle lo antes posible`);
+    // alert(`Ha solicitado: ${tipoServicio}.\nVendrá un camarero a atenderle lo antes posible`);
   }
 
 
   // CONSULTA A LA API
   const handleSubmit = async (e) => {
     const url = "http://localhost:8080/servicios";
+
+    const idReserva = localStorage.getItem("token");
 
     try {
       const response = await fetch(url, {
@@ -46,15 +48,16 @@ const Cafeteria = () => {
           "satisfecho": false,
           "idEmpleado": null,
           "idRecurso": null,
-          "idReserva": null
+          "idReserva": idReserva
         }),
 
       });
 
-      const data = await response.json();
+      // const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.token);
+        // localStorage.setItem("token", data.token);
+        alert(`Ha solicitado: ${tipoServicio}\nVendrá un camarero a atenderle lo antes posible.`);
 
       } else {
         console.log(data.detail || "Error de autenticación");
