@@ -1,3 +1,5 @@
+database.trace.db
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar

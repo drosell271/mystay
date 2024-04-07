@@ -8,19 +8,22 @@ export const Principal = () => {
     return (
         <div>
             <div id='iconosPrincipal'>
-                <div>
+
+                {/* ACTIVAR ESTOS 2 DIVS PARA SPRINT 3 !!! */}
+
+                {/* <div>
                     <Link to='/perfil' >
                         <img src='../icono_perfil_nuevo.png' alt='PERFIL' className='iconoMenuPrincipal' />
                     </Link>
                     <h2>Perfil</h2>
-                </div>
+                </div> */}
 
-                <div>
+                {/* <div>
                     <Link to='/reservas' >
                         <img src='../icono_reserva.png' alt='RESERVAS' className='iconoMenuPrincipal' />
                     </Link>
                     <h2>Reservas</h2>
-                </div>
+                </div> */}
 
                 <div>
                     <Link to='/habitacion' >

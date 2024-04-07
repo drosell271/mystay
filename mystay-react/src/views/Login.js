@@ -1,36 +1,46 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
 export const Login = () => {
 
+    const navigate = useNavigate();
+
     // VARIABLES DE ESTADO
-    const [loginCorrecto, setLoginCorrecto] = useState(true); // PONERLO A FALSE CUANDO ESTÉ LISTO PARA COMPROBAR USUARIOS
     const [numHabitacion, setNumHabitacion] = useState(0);
     const [documento, setDocumento] = useState(0);
     const [error, setError] = useState("");
-    const [hayError, setHayError] = useState(false);
 
 
+    // FUNCIONES
     const manejaLogin = () => {
         setNumHabitacion(document.getElementById('numHabitacion').value);
         setDocumento(document.getElementById('dni-pp').value);
 
-        //lamada a la API
+        // llamada a la API
         handleSubmit();
     }
 
-    // Habra que tener una funcion que compruebe si NumHabitacion está asociada al dni y en ese caso: setLoginCorrecto(true)
+
+    function mostrarError(error) {
+        const divError = document.getElementById('msgError');
+        divError.textContent = error;
+        divError.style.display = 'block';
+
+        // Oculta el mensaje de error después de 2 segundos
+        setTimeout(() => {
+            divError.style.display = 'none';
+        }, 2000);
+    }
+
 
 
     // CONSULTA A LA API
     const handleSubmit = async (e) => {
         const url = "http://localhost:8080/login";
-
-        e.preventDefault();
 
         try {
             const response = await fetch(url, {
@@ -46,14 +56,16 @@ export const Login = () => {
 
             if (response.ok) {
                 localStorage.setItem("token", data.token);
-                setLoginCorrecto(true);
+                navigate('/principal');
+
             } else {
                 setError(data.detail || "Error de autenticación");
-                setHayError(true);
+                mostrarError(error);
+
             }
         } catch (error) {
-            setError("Error de login");
-            setHayError(true);
+            setError("Error al conectar con el servidor");
+            mostrarError(error);
         }
     };
 
@@ -72,8 +84,9 @@ export const Login = () => {
                 </div>
             </div>
             {/* mostrar el error en pantalla */}
-            <div>{hayError ? () => { setTimeout(error, 4000) } : ""}</div>
-            <Link to={loginCorrecto ? '/principal' : '/login'}><Button variant='dark' onClick={() => manejaLogin()}>Login</Button ></Link>
-        </div >
+            <div id="msgError"></div>
+
+            <Button variant='dark' onClick={() => manejaLogin()}>Login</Button>
+        </div>
     )
 }
