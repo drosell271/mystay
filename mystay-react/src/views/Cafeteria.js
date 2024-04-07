@@ -8,6 +8,38 @@ const Cafeteria = () => {
 
   const [servicio, setServicio] = useState("");
 
+  // CONSULTA A LA API
+  // const handleSubmit = async (e) => {
+  //   const url = "http://localhost:8080/login";
+
+  //   try {
+  //       const response = await fetch(url, {
+  //           method: "POST",
+  //           headers: {
+  //               "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify({ documento, numHabitacion }),
+
+  //       });
+
+  //       const data = await response.json();
+
+  //       if (response.ok) {
+  //           localStorage.setItem("token", data.token);
+  //           navigate('/principal');
+
+  //       } else {
+  //           setError(data.detail || "Error de autenticación");
+  //           mostrarError(error);
+
+  //       }
+  //   } catch (error) {
+  //       setError("Error al conectar con el servidor");
+  //       mostrarError(error);
+  //   }
+  // };
+
+
   return (
     <div className='ordenados'>
       <img className="fotos" src="../comida.png" alt="imagencomida" onClick={() => { setServicio("comida"); alert("Pronto le atenderemos para servirle su comida") }} />
