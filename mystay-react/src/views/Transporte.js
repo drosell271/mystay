@@ -46,12 +46,10 @@ const Transporte = () => {
 
       });
 
-      // const data = await response.json();
 
       if (response.ok) {
-        // localStorage.setItem("token", data.token);
-        if (tipoServicio !== ("Cabify" || "Uber")) {
-          alert(`Ha solicitado servicio de: ${tipoServicio}`);
+        if (tipoTransporte !== ("Cabify" || "Uber")) {
+          alert(`Ha solicitado servicio de: ${tipoTransporte}`);
         }
 
         if (tipoTransporte === "Uber") {
@@ -61,7 +59,7 @@ const Transporte = () => {
         }
 
       } else {
-        console.log(data.detail || "Error de autenticación");
+        console.log("Error");
 
       }
     } catch (error) {

@@ -21,7 +21,6 @@ const Cafeteria = () => {
     }
 
     handleSubmit();
-    // alert(`Ha solicitado: ${tipoServicio}.\nVendrá un camarero a atenderle lo antes posible`);
   }
 
 
@@ -53,14 +52,12 @@ const Cafeteria = () => {
 
       });
 
-      // const data = await response.json();
 
       if (response.ok) {
-        // localStorage.setItem("token", data.token);
-        alert(`Ha solicitado: ${tipoServicio}\nVendrá un camarero a atenderle lo antes posible.`);
+        alert(`Ha solicitado: ${servicio}\nVendrá un camarero a atenderle lo antes posible.`);
 
       } else {
-        console.log(data.detail || "Error de autenticación");
+        console.log("Error");
 
       }
     } catch (error) {

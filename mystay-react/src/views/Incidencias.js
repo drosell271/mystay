@@ -45,14 +45,12 @@ const Incidencias = () => {
 
       });
 
-      // const data = await response.json();
 
       if (response.ok) {
-        // localStorage.setItem("token", data.token);
         alert("Su incidencia ha sido enviada y pronto será evaluada");
 
       } else {
-        console.log(data.detail || "Error de autenticación");
+        console.log("Error");
 
       }
     } catch (error) {

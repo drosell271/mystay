@@ -45,14 +45,12 @@ const Confort = () => {
 
       });
 
-      // const data = await response.json();
 
       if (response.ok) {
-        // localStorage.setItem("token", data.token);
-        alert(`Ha solicitado: ${tipoServicio}`);
+        alert(`Ha solicitado: ${servicio}`);
 
       } else {
-        console.log(data.detail || "Error de autenticación");
+        console.log("Error de autenticación");
 
       }
     } catch (error) {
