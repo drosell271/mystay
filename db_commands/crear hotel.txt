@@ -1,0 +1,1 @@
+INSERT INTO HOTEL (ID, CIUDAD, DIRECCION) VALUES (1, 'Madrid', 'Calle Gran Vía, 1');

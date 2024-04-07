@@ -29,24 +29,29 @@ public class ServicioService {
 	public Servicio guardarServicio(@Nullable Servicio Servicio) {
 		com.isst.mystay.service.PMSService pmsService = new PMSService();
 
-		System.out.println("Por aca");
+		// System.out.println("Entrando en guardar servicio");
 		if (Servicio != null) {
-			System.out.println("Por aca");
+			// System.out.println("Preparando para checkear PMS");
 			String temp = pmsService.checkPMS(Servicio.getRecursoNecesario(), Servicio.getTipoEmpleado());
-			System.out.println(temp);
+			// System.out.println("Resultado del PMS: " + temp);
 			if (temp != null) {
-				System.out.println("Aqui 1");
+				// System.out.println("Comprobando recurso...");
 				List<Recurso> recursos = recursoRepository.findAll();
 				Recurso recurso = recursos.stream()
 						.filter(c -> c.getNombre().equals(Servicio.getRecursoNecesario()))
 						.findFirst()
 						.orElse(null);
+				// System.out.println("Recurso: " + recurso);
+				Servicio.setIdRecurso(recurso.getId());
 
+				// System.out.println("Comprobando empleado...");
 				List<Empleado> empleados = empleadoRepository.findAll();
 				Empleado empleado = empleados.stream()
 						.filter(c -> c.getNombre().equals(temp))
 						.findFirst()
 						.orElse(null);
+				Servicio.setIdEmpleado(empleado.getId());
+				// System.out.println("Empleado: " + empleado);
 
 				if (recurso == null || empleado == null)
 					return null;
