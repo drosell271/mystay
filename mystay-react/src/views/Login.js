@@ -8,6 +8,7 @@ import { useState } from 'react';
 export const Login = () => {
 
     const navigate = useNavigate();
+
     // VARIABLES DE ESTADO
     const [numHabitacion, setNumHabitacion] = useState(0);
     const [documento, setDocumento] = useState(0);
