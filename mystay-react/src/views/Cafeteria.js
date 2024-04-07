@@ -7,46 +7,71 @@ import { useState } from 'react';
 const Cafeteria = () => {
 
   const [servicio, setServicio] = useState("");
+  const [recurso, setRecurso] = useState("");
+
+  // Pedir servicio
+  const pideServicio = (tipoServicio) => {
+
+    setServicio(tipoServicio);
+
+    if (tipoServicio === "Comida") {
+      setRecurso("COCINA");
+    } else if (tipoServicio === "Bebida") {
+      setRecurso("CAFETERIA");
+    }
+
+    handleSubmit();
+    alert(`Ha solicitado: ${tipoServicio}.\nVendrá un camarero a atenderle lo antes posible`);
+  }
+
 
   // CONSULTA A LA API
-  // const handleSubmit = async (e) => {
-  //   const url = "http://localhost:8080/login";
+  const handleSubmit = async (e) => {
+    const url = "http://localhost:8080/servicios";
 
-  //   try {
-  //       const response = await fetch(url, {
-  //           method: "POST",
-  //           headers: {
-  //               "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({ documento, numHabitacion }),
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "nombre": recurso,
+          "descripcion": servicio,
+          "recursoNecesario": recurso,
+          "tipoEmpleado": "CAMARERO",
+          "duracion": 3.0,
+          "precio": 10.00,
+          "esPremium": false,
+          "satisfecho": false,
+          "idEmpleado": null,
+          "idRecurso": null,
+          "idReserva": null
+        }),
 
-  //       });
+      });
 
-  //       const data = await response.json();
+      const data = await response.json();
 
-  //       if (response.ok) {
-  //           localStorage.setItem("token", data.token);
-  //           navigate('/principal');
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
 
-  //       } else {
-  //           setError(data.detail || "Error de autenticación");
-  //           mostrarError(error);
+      } else {
+        console.log(data.detail || "Error de autenticación");
 
-  //       }
-  //   } catch (error) {
-  //       setError("Error al conectar con el servidor");
-  //       mostrarError(error);
-  //   }
-  // };
-
+      }
+    } catch (error) {
+      console.log("Error al conectar con el servidor");
+    }
+  };
 
   return (
     <div className='ordenados'>
-      <button className='botontr' onClick={() => { setServicio("comida"); alert("Pronto le atenderemos para servirle su comida") }}><img className="fotos" src="../comida.png" alt="imagencomida" /></button>
+      <button className='botontr' onClick={() => { pideServicio("Comida") }}><img className="fotos" src="../comida.png" alt="imagencomida" /></button>
       <h2>Comida</h2>
-      <button className='botontr' onClick={() => { setServicio("bebida"); alert("Pronto le atenderemos con nuestro servicio de bebidas") }}><img className="fotos" src="../bebida.png" alt="imagenbebida"/></button>
+      <button className='botontr' onClick={() => { pideServicio("Bebida") }}><img className="fotos" src="../bebida.png" alt="imagenbebida" /></button>
       <h2>Bebida</h2>
-      <div><Link to='/habitacion'><Button className='atras' variant="dark">Atrás</Button></Link></div>
+      <div><Link to='/habitacion'><Button className='atras' variant="dark">Volver</Button></Link></div>
     </div>
   )
 }

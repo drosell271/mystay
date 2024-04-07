@@ -6,51 +6,68 @@ import { useState } from 'react';
 
 const Confort = () => {
 
-  // Posibles valores: almohada, ropa_cama, productos_baño
+  // Posibles valores: Almohada, Ropa de cama, Productos de baño
   const [servicio, setServicio] = useState("");
 
+  // Pedir servicio
+  const pideServicio = (tipoServicio) => {
+    setServicio(tipoServicio);
+    handleSubmit();
+    alert(`Ha solicitado: ${tipoServicio}`);
+  }
+
+
   // CONSULTA A LA API
-  // const handleSubmit = async (e) => {
-  //   const url = "http://localhost:8080/login";
+  const handleSubmit = async (e) => {
+    const url = "http://localhost:8080/servicios";
 
-  //   try {
-  //       const response = await fetch(url, {
-  //           method: "POST",
-  //           headers: {
-  //               "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({ documento, numHabitacion }),
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "nombre": "HABITACIONES",
+          "descripcion": servicio,
+          "recursoNecesario": "HABITACIONES",
+          "tipoEmpleado": "HABITACIONES",
+          "duracion": 2.0,
+          "precio": 0.00,
+          "esPremium": false,
+          "satisfecho": false,
+          "idEmpleado": null,
+          "idRecurso": null,
+          "idReserva": null
+        }),
 
-  //       });
+      });
 
-  //       const data = await response.json();
+      const data = await response.json();
 
-  //       if (response.ok) {
-  //           localStorage.setItem("token", data.token);
-  //           navigate('/principal');
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
 
-  //       } else {
-  //           setError(data.detail || "Error de autenticación");
-  //           mostrarError(error);
+      } else {
+        console.log(data.detail || "Error de autenticación");
 
-  //       }
-  //   } catch (error) {
-  //       setError("Error al conectar con el servidor");
-  //       mostrarError(error);
-  //   }
-  // };
+      }
+    } catch (error) {
+      console.log("Error al conectar con el servidor");
+    }
+  };
 
   return (
     <div>
       <div id='iconosconfort' className='ordenados'>
-        <button className='botontr' onClick={() => { setServicio("almohada"); alert("Ha solicitado una nueva almohada") }}><img className="fotos" src="../almohada.png" alt="imagenalmohada"/></button>
+        <button className='botontr' onClick={() => { pideServicio("Almohada") }}><img className="fotos" src="../almohada.png" alt="imagenalmohada" /></button>
         <h2>Solicitar almohada</h2>
-        <button className='botontr' onClick={() => { setServicio("ropa_cama"); alert("Ha solicitado una ropa de cama") }}><img className="fotos" src="../ropacama.png" alt="imagenropacama"/></button>
+        <button className='botontr' onClick={() => { pideServicio("Ropa de cama") }}><img className="fotos" src="../ropacama.png" alt="imagenropacama" /></button>
         <h2>Ropa de cama</h2>
-        <button className='botontr' onClick={() => { setServicio("productos_baño"); alert("Ha solicitado nuevos productos para el baño") }}><img className="fotos" src="../productosbaño.png" alt="imagenproductosbaño"/></button>
+        <button className='botontr' onClick={() => { pideServicio("Productos de baño") }}><img className="fotos" src="../productosbaño.png" alt="imagenproductosbaño" /></button>
         <h2>Productos de baño</h2>
       </div>
-      <div><Link to='/habitacion'><Button className='atras' variant="dark">Atrás</Button></Link></div>
+      <div><Link to='/habitacion'><Button className='atras' variant="dark">Volver</Button></Link></div>
     </div>
   )
 }

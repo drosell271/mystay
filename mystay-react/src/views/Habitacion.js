@@ -14,7 +14,7 @@ const Habitacion = () => {
         <Link to='./incidencias'><img className="fotos" src="../incidencias.png" alt="imagenlogo" /></Link>
         <h2>Incidencias</h2>
       </div>
-      <Link to='/principal'><Button className='atras' variant="dark">Atrás</Button></Link>
+      <Link to='/principal'><Button className='atras' variant="dark">Volver</Button></Link>
     </div>
 
   )
