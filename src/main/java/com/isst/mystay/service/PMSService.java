@@ -39,13 +39,12 @@ class Empleado {
 public class PMSService {
 
 	public String checkPMS(String recursoNecesario, String tipoEmpleado) {
-		// System.out.println("Entrando en PMS con recurso: " + recursoNecesario + " y
-		// empleado: " + tipoEmpleado + ".");
+		System.out.println("Entrando en PMS con recurso: " + recursoNecesario + " y empleado: " + tipoEmpleado + ".");
 
 		int hoyIndex = LocalDate.now().getDayOfWeek().getValue() - 1;
 
 		LocalTime horaActual = LocalTime.now();
-		// System.out.println("Hora Actual: " + horaActual);
+		System.out.println("Hora Actual: " + horaActual);
 
 		List<Recurso> recursos = Arrays.asList(
 				new Recurso("COCINA", Arrays.asList(true, true, true, true, true, true, true),
@@ -53,11 +52,13 @@ public class PMSService {
 								LocalTime.of(6, 0), LocalTime.of(6, 0), LocalTime.of(6, 0)),
 						Arrays.asList(LocalTime.of(23, 0), LocalTime.of(23, 0), LocalTime.of(23, 0),
 								LocalTime.of(23, 0), LocalTime.of(23, 0), LocalTime.of(23, 0), LocalTime.of(23, 0))),
-				new Recurso("CAFETERIA", Arrays.asList(true, true, true, true, true, false, false),
+				new Recurso("CAFETERIA", Arrays.asList(true, true, true, true, true, false, true),
 						Arrays.asList(LocalTime.of(8, 0), LocalTime.of(8, 0), LocalTime.of(8, 0), LocalTime.of(8, 0),
-								LocalTime.of(8, 0), LocalTime.MIDNIGHT, LocalTime.MIDNIGHT),
+								LocalTime.of(8, 0), LocalTime.MIDNIGHT, LocalTime.of(8,
+										0)),
 						Arrays.asList(LocalTime.of(20, 0), LocalTime.of(20, 0), LocalTime.of(20, 0),
-								LocalTime.of(20, 0), LocalTime.of(20, 0), LocalTime.MIDNIGHT, LocalTime.MIDNIGHT)),
+								LocalTime.of(20, 0), LocalTime.of(20, 0), LocalTime.MIDNIGHT, LocalTime.of(23,
+										59))),
 				new Recurso("HABITACIONES", Arrays.asList(true, true, true, true, true, true, true),
 						Arrays.asList(LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0),
 								LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0)),
@@ -89,7 +90,7 @@ public class PMSService {
 						Arrays.asList(LocalTime.of(14, 0), LocalTime.of(14, 0), LocalTime.MIDNIGHT, LocalTime.MIDNIGHT,
 								LocalTime.of(14, 0), LocalTime.of(14, 0), LocalTime.of(14, 0)),
 						Arrays.asList(LocalTime.of(22, 0), LocalTime.of(22, 0), LocalTime.MIDNIGHT, LocalTime.MIDNIGHT,
-								LocalTime.of(22, 0), LocalTime.of(22, 0), LocalTime.of(22, 0))),
+								LocalTime.of(22, 0), LocalTime.of(22, 0), LocalTime.of(23, 59))),
 
 				new Empleado("PABLO", "CAMARERO", Arrays.asList(false, false, true, true, false, true, false),
 						Arrays.asList(LocalTime.MIDNIGHT, LocalTime.MIDNIGHT, LocalTime.of(22, 0), LocalTime.of(22, 0),
@@ -133,7 +134,7 @@ public class PMSService {
 								LocalTime.MIDNIGHT, LocalTime.MIDNIGHT, LocalTime.of(8, 0)),
 						Arrays.asList(LocalTime.of(16, 0), LocalTime.of(16, 0), LocalTime.of(16, 0),
 								LocalTime.of(16, 0),
-								LocalTime.MIDNIGHT, LocalTime.MIDNIGHT, LocalTime.of(16, 0))),
+								LocalTime.MIDNIGHT, LocalTime.MIDNIGHT, LocalTime.of(23, 59))),
 
 				new Empleado("LUIS", "MANTENIMIENTO", Arrays.asList(false, false, true, true, true, true, false),
 						Arrays.asList(LocalTime.MIDNIGHT, LocalTime.MIDNIGHT, LocalTime.of(9, 0), LocalTime.of(9, 0),
@@ -145,24 +146,21 @@ public class PMSService {
 			if (recurso.nombre.equals(recursoNecesario) && recurso.diasAbierto.get(hoyIndex)
 					&& horaActual.isAfter(recurso.horaApertura.get(hoyIndex))
 					&& horaActual.isBefore(recurso.horaSalida.get(hoyIndex))) {
-				// System.out.println("Recurso " + recurso.nombre + " encontrado y abierto.");
+				System.out.println("Recurso " + recurso.nombre + " encontrado y abierto.");
 				for (Empleado empleado : empleados) {
 					if (empleado.tipoEmpleado.equals(tipoEmpleado) && empleado.diasTrabaja.get(hoyIndex)
 							&& horaActual.isAfter(empleado.comienzoTurno.get(hoyIndex))
 							&& horaActual.isBefore(empleado.finalTurno.get(hoyIndex))) {
-						// System.out.println("Empleado " + empleado.nombre + " encontrado y
-						// trabajando.");
+						System.out.println("Empleado " + empleado.nombre + " encontrado y trabajando.");
 						return empleado.nombre;
 					}
 				}
-				// System.out.println("No se encontró un empleado disponible para el recurso " +
-				// recursoNecesario + ".");
+				System.out.println("No se encontró un empleado disponible para el recurso " + recursoNecesario + ".");
 				return null;
 			}
 		}
 
-		// System.out.println("No se encontró el recurso solicitado o no está abierto en
-		// este momento.");
+		System.out.println("No se encontró el recurso solicitado o no está abierto en este momento.");
 		return null;
 	}
 
