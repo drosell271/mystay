@@ -27,7 +27,7 @@ public class ServicioService {
 	private EmpleadoRepository empleadoRepository;
 
 	public Servicio guardarServicio(@Nullable Servicio Servicio) {
-		PMSService pmsService = new PMSService();
+		com.isst.mystay.service.PMSService pmsService = new PMSService();
 
 		System.out.println("Por aca");
 		if (Servicio != null) {
