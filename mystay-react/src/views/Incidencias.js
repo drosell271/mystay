@@ -18,6 +18,7 @@ const Incidencias = () => {
 
   // CONSULTA A LA API
   const handleSubmit = async (e) => {
+    console.log(`incidencia: ${incidencia}`);
     const url = "http://localhost:8080/servicios";
 
     const idReserva = localStorage.getItem("token");
@@ -50,8 +51,7 @@ const Incidencias = () => {
         alert("Su incidencia ha sido enviada y pronto será evaluada");
 
       } else {
-        console.log("Error");
-
+        alert("La incidencia ha sido enviada, pero ahora mismo no podemos atenderle.");
       }
     } catch (error) {
       console.log("Error al conectar con el servidor");

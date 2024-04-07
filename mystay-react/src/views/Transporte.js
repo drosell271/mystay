@@ -6,19 +6,12 @@ import { useState } from 'react';
 
 const Transporte = () => {
 
-  const [tipoTransporte, setTipoTransporte] = useState("");
-
-
-  // Pedir servicio
-  const pideServicio = (tipoServicio) => {
-
-    setTipoTransporte(tipoServicio);
-    handleSubmit();
-  }
-
 
   // CONSULTA A LA API
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (servicio) => {
+
+    console.log(`servicio: ${servicio}`);
+
     const url = "http://localhost:8080/servicios";
 
     const idReserva = localStorage.getItem("token");
@@ -32,7 +25,7 @@ const Transporte = () => {
         },
         body: JSON.stringify({
           "nombre": "TRANSFER",
-          "descripcion": tipoTransporte,
+          "descripcion": servicio,
           "recursoNecesario": "TRANSFER",
           "tipoEmpleado": "RECEPCION",
           "duracion": 1.0,
@@ -48,19 +41,18 @@ const Transporte = () => {
 
 
       if (response.ok) {
-        if (tipoTransporte !== ("Cabify" || "Uber")) {
-          alert(`Ha solicitado servicio de: ${tipoTransporte}`);
+        if (servicio !== ("Cabify" || "Uber")) {
+          alert(`Ha solicitado servicio de: ${servicio}`);
         }
 
-        if (tipoTransporte === "Uber") {
+        if (servicio === "Uber") {
           window.location.href = "https://www.uber.com/es/es-es/";
-        } else if (tipoTransporte === "Cabify") {
+        } else if (servicio === "Cabify") {
           window.location.href = "https://cabify.com/es";
         }
 
       } else {
-        console.log("Error");
-
+        alert("No se encontró el recurso solicitado o no está abierto en este momento.");
       }
     } catch (error) {
       console.log("Error al conectar con el servidor");
@@ -72,23 +64,23 @@ const Transporte = () => {
     <div>
       <div id='iconostransporte'>
         <div>
-          <button className='botontr' onClick={() => { pideServicio("Uber") }}><img className="fotos" src="../uber.png" alt="imagenuber" /></button>
+          <button className='botontr' onClick={() => { handleSubmit("Uber") }}><img className="fotos" src="../uber.png" alt="imagenuber" /></button>
           <h2>Uber</h2>
         </div>
         <div>
-          <button className='botontr' onClick={() => { pideServicio("Cabify") }}><img className="fotos" src="../cabify.png" alt="imagencabify" /></button>
+          <button className='botontr' onClick={() => { handleSubmit("Cabify") }}><img className="fotos" src="../cabify.png" alt="imagencabify" /></button>
           <h2>Cabify</h2>
         </div>
         <div>
-          <button className='botontr' onClick={() => { pideServicio("Taxi") }}><img className="fotos" src="../taxi.png" alt="imagentaxi" /></button>
+          <button className='botontr' onClick={() => { handleSubmit("Taxi") }}><img className="fotos" src="../taxi.png" alt="imagentaxi" /></button>
           <h2>Taxi</h2>
         </div>
         {/* <div>
-          <button className='botontr' onClick={() => { pideServicio("Transporte privado") }}><img className="fotos" src="../transportepriv.png" alt="imagentransportepriv" /></button>
+          <button className='botontr' onClick={() => { handleSubmit("Transporte privado") }}><img className="fotos" src="../transportepriv.png" alt="imagentransportepriv" /></button>
           <h2>Transporte <br /> privado</h2> 
         </div>
         <div>
-          <button className='botontr' onClick={() => { pideServicio("Billetes") }}><img className="fotos" src="../billetes.png" alt="imagenbilletes" /></button>
+          <button className='botontr' onClick={() => { handleSubmit("Billetes") }}><img className="fotos" src="../billetes.png" alt="imagenbilletes" /></button>
           <h2>Billetes</h2>
         </div> */}
       </div>

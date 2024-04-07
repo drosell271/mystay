@@ -2,27 +2,12 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Cafeteria = () => {
-	const [servicio, setServicio] = useState("");
-	const [recurso, setRecurso] = useState("");
-
-	// Pedir servicio
-	const pideServicio = (tipoServicio) => {
-		setServicio(tipoServicio);
-
-		if (tipoServicio === "Comida") {
-			setRecurso("COCINA");
-		} else if (tipoServicio === "Bebida") {
-			setRecurso("CAFETERIA");
-		}
-
-		handleSubmit();
-	};
 
 	// CONSULTA A LA API
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (servicio, recurso) => {
+		console.log(`servicio: ${servicio}\nrecurso: ${recurso}`);
 		const url = "http://localhost:8080/servicios";
 
 		const idReserva = localStorage.getItem("token");
@@ -53,7 +38,7 @@ const Cafeteria = () => {
 					`Ha solicitado: ${servicio}\nVendrá un camarero a atenderle lo antes posible.`
 				);
 			} else {
-				console.log("Error");
+				alert("No se encontró el recurso solicitado o no está abierto en este momento.");
 			}
 		} catch (error) {
 			console.log("Error al conectar con el servidor");
@@ -65,7 +50,7 @@ const Cafeteria = () => {
 			<button
 				className="botontr"
 				onClick={() => {
-					pideServicio("Comida");
+					handleSubmit("Comida", "COCINA");
 				}}
 			>
 				<img className="fotos" src="../comida.png" alt="imagencomida" />
@@ -74,7 +59,7 @@ const Cafeteria = () => {
 			<button
 				className="botontr"
 				onClick={() => {
-					pideServicio("Bebida");
+					handleSubmit("Bebida", "CAFETERIA");
 				}}
 			>
 				<img className="fotos" src="../bebida.png" alt="imagenbebida" />

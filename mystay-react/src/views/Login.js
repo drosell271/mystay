@@ -52,7 +52,7 @@ export const Login = () => {
 				localStorage.setItem("token", data);
 				navigate("/principal");
 			} else {
-				setError(data.detail || "Error de autenticación");
+				setError("Error de autenticación");
 				mostrarError(error);
 			}
 		} catch (error) {

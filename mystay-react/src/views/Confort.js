@@ -2,22 +2,12 @@ import React from 'react'
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 const Confort = () => {
 
-  // Posibles valores: Almohada, Ropa de cama, Productos de baño
-  const [servicio, setServicio] = useState("");
-
-  // Pedir servicio
-  const pideServicio = (tipoServicio) => {
-    setServicio(tipoServicio);
-    handleSubmit();
-  }
-
 
   // CONSULTA A LA API
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (servicio) => {
     const url = "http://localhost:8080/servicios";
 
     const idReserva = localStorage.getItem("token");
@@ -48,10 +38,8 @@ const Confort = () => {
 
       if (response.ok) {
         alert(`Ha solicitado: ${servicio}`);
-
       } else {
-        console.log("Error de autenticación");
-
+        alert("No se encontró el recurso solicitado o no está abierto en este momento.");
       }
     } catch (error) {
       console.log("Error al conectar con el servidor");
@@ -61,11 +49,11 @@ const Confort = () => {
   return (
     <div>
       <div id='iconosconfort' className='ordenados'>
-        <button className='botontr' onClick={() => { pideServicio("Almohada") }}><img className="fotos" src="../almohada.png" alt="imagenalmohada" /></button>
+        <button className='botontr' onClick={() => { handleSubmit("Almohada") }}><img className="fotos" src="../almohada.png" alt="imagenalmohada" /></button>
         <h2>Solicitar almohada</h2>
-        <button className='botontr' onClick={() => { pideServicio("Ropa de cama") }}><img className="fotos" src="../ropacama.png" alt="imagenropacama" /></button>
+        <button className='botontr' onClick={() => { handleSubmit("Ropa de cama") }}><img className="fotos" src="../ropacama.png" alt="imagenropacama" /></button>
         <h2>Ropa de cama</h2>
-        <button className='botontr' onClick={() => { pideServicio("Productos de baño") }}><img className="fotos" src="../productosbaño.png" alt="imagenproductosbaño" /></button>
+        <button className='botontr' onClick={() => { handleSubmit("Productos de baño") }}><img className="fotos" src="../productosbaño.png" alt="imagenproductosbaño" /></button>
         <h2>Productos de baño</h2>
       </div>
       <div><Link to='/habitacion'><Button className='atras' variant="dark">Volver</Button></Link></div>
