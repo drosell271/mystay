@@ -42,9 +42,9 @@ const Cafeteria = () => {
 
   return (
     <div className='ordenados'>
-      <img className="fotos" src="../comida.png" alt="imagencomida" onClick={() => { setServicio("comida"); alert("Pronto le atenderemos para servirle su comida") }} />
+      <button className='botontr' onClick={() => { setServicio("comida"); alert("Pronto le atenderemos para servirle su comida") }}><img className="fotos" src="../comida.png" alt="imagencomida" /></button>
       <h2>Comida</h2>
-      <img className="fotos" src="../bebida.png" alt="imagenbebida" onClick={() => { setServicio("bebida"); alert("Pronto le atenderemos con nuestro servicio de bebidas") }} />
+      <button className='botontr' onClick={() => { setServicio("bebida"); alert("Pronto le atenderemos con nuestro servicio de bebidas") }}><img className="fotos" src="../bebida.png" alt="imagenbebida"/></button>
       <h2>Bebida</h2>
       <div><Link to='/habitacion'><Button className='atras' variant="dark">Atrás</Button></Link></div>
     </div>
