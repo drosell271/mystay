@@ -9,45 +9,53 @@ const Incidencias = () => {
   const [incidencia, setIncidencia] = useState("");
 
   const gestionaIncidencias = () => {
-    if (incidencia != "") {
+    if (incidencia !== "") {
       alert("Su incidencia ha sido enviada y pronto será evaluada");
+      handleSubmit();
     } else {
       alert("Por favor, escriba su incidencia");
     }
   }
 
-
   // CONSULTA A LA API
-  // const handleSubmit = async (e) => {
-  //   const url = "http://localhost:8080/login";
+  const handleSubmit = async (e) => {
+    const url = "http://localhost:8080/servicios";
 
-  //   try {
-  //       const response = await fetch(url, {
-  //           method: "POST",
-  //           headers: {
-  //               "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({ documento, numHabitacion }),
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "nombre": "INCIDENCIAS",
+          "descripcion": incidencia,
+          "recursoNecesario": "INCIDENCIAS",
+          "tipoEmpleado": "MANTENIMIENTO",
+          "duracion": 5.0,
+          "precio": 0.00,
+          "esPremium": false,
+          "satisfecho": false,
+          "idEmpleado": null,
+          "idRecurso": null,
+          "idReserva": null
+        }),
 
-  //       });
+      });
 
-  //       const data = await response.json();
+      const data = await response.json();
 
-  //       if (response.ok) {
-  //           localStorage.setItem("token", data.token);
-  //           navigate('/principal');
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
 
-  //       } else {
-  //           setError(data.detail || "Error de autenticación");
-  //           mostrarError(error);
+      } else {
+        console.log(data.detail || "Error de autenticación");
 
-  //       }
-  //   } catch (error) {
-  //       setError("Error al conectar con el servidor");
-  //       mostrarError(error);
-  //   }
-  // };
-
+      }
+    } catch (error) {
+      console.log("Error al conectar con el servidor");
+    }
+  };
 
   return (
     <div>
@@ -60,7 +68,7 @@ const Incidencias = () => {
           onChange={e => { setIncidencia(e.target.value) }}
         />
         <Button className='enviar' variant="dark" onClick={() => gestionaIncidencias()}>Enviar</Button>
-        <Link to='/habitacion'><Button className='atras' variant="dark">Atrás</Button></Link>
+        <Link to='/habitacion'><Button className='atras' variant="dark">Volver</Button></Link>
       </div>
     </div>
   )
