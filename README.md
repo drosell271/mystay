@@ -5,9 +5,11 @@
 
 Antes de comenzar, asegúrate de tener instalado:
 
-- **Java** (versión 8, 11, o 15). Verifica con `java -version`.
+- **Java JDK** (versión 22). Verifica con `java -version`.
+- **Node.js** (versión 20)
+- **npm** (versión 10)
 - **Visual Studio Code**.
-- **Extensiones VS Code**: Spring Boot Extension Pack, Java Extension Pack, Lombok (opcional).
+- **Extensiones VS Code**: Spring Boot Extension Pack, Java Extension Pack.
 
 ## 🚀 Inicio Rápido
 
@@ -16,75 +18,99 @@ Antes de comenzar, asegúrate de tener instalado:
 Si ya tienes un repositorio:
 
 ```bash
-git clone https://github.com/drosell271/MyStay.git
-cd MyStay
+git clone https://github.com/drosell271/mystay
+cd mystay
 ```
 
 ### Estructura del Proyecto
+#### Spring Boot
+- `pom.xml`: Configuración del proyecto.
+- `src/main/java/`: Código fuente de Java (Back-End).
+- `src/main/resources/`: Recursos Front-End y configuraciones.
 
-- `pom.xml` o `build.gradle`: Configuración del proyecto.
-- `src/main/java/`: Código fuente de Java.
-- `src/main/resources/`: Recursos y configuraciones.
-- `src/test/java/`: Pruebas.
+#### React
+- `others/mystay-react`: Proyecto de desarrollo en React 
 
-
-
-## 🛠 Desarrollo
-
-Escribe tu código en el directorio `src/main/java/`. Utiliza VS Code para facilitar el desarrollo.
+#### Otros
+- `others/db-commands`: Comandos de configuraci de la base de datos
+- `database.mv.db`: Base de datos de H2
 
 ### Ejecución de la Aplicación
 
 Usa el terminal integrado en VS Code:
 
+#### Windows
+ ```bash
+  ./mvnw.cmd spring-boot:run
+  ```
 
-  ```bash
+#### Linux/Mac
+ ```bash
   ./mvnw spring-boot:run
   ```
 
-## 🧪 Pruebas y Construcción
+ 
 
-### Construir el Proyecto
-
-
-  ```bash
-  ./mvnw clean install
+## 🧪 Construir el Proyecto
+#### Windows
+ ```bash
+  ./mvnw.cmd clean install
   ```
 
-### Ejecutar Pruebas
-
-
-  ```bash
-  ./mvnw test
+#### Linux/Mac
+ ```bash
+  ./mvnw clean install
   ```
 
 ## ⚙️ Configuración del Entorno de Desarrollo
 
 Para asegurar un desarrollo fluido y eficiente, es crucial tener configurado correctamente tu entorno de desarrollo. A continuación, se detallan los pasos para preparar tu entorno con Java 22 y Visual Studio Code.
 
+### 📦 Instalación de Node.js v20 y npm v10
+
+1. **Windows**:
+   - Descarga el instalador de Node.js desde [la página oficial](https://nodejs.org/).
+   - Ejecuta el archivo `.exe` descargado y sigue las instrucciones de instalación.
+   - Asegúrate de que la opción para instalar npm esté seleccionada y que se añada al `PATH`.
+   - Abre una terminal y verifica las versiones instaladas: `node -v`, `npm -v`.
+
+2. **macOS**:
+   - Instala Homebrew si aún no lo has hecho: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
+   - Instala Node.js (esto instalará npm también): `brew install node@20`.
+   - Verifica las versiones de Node.js y npm: `node -v`, `npm -v`.
+
+3. **Linux (Debian/Ubuntu)**:
+   - Actualiza tu lista de paquetes: `sudo apt update`.
+   - Instala Node.js: `curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -`, `sudo apt-get install -y nodejs`.
+   - Verifica las versiones de Node.js y npm: `node -v`, `npm -v`.
+
 ### 🌐 Instalación de Java 22
+
 1. **Verificar Java**:
    - Abre una terminal.
    - Escribe `java --version` y presiona Enter.
    - Si no ves Java 22, sigue los pasos para instalarlo.
 
-2. **Instalar Java 22**:
-   - Visita el [OpenJDK Archive](https://jdk.java.net/archive/) o el [sitio de Oracle](https://www.oracle.com/java/technologies/javase/jdk22-archive-downloads.html).
-   - Descarga el JDK 22 para tu sistema operativo.
-   - Sigue las instrucciones de instalación específicas para tu SO.
+2. **Instalar Java**:
+   - Visita [OpenJDK Archive](https://jdk.java.net/archive/) o [Oracle](https://www.oracle.com/java/technologies/javase/jdk22-archive-downloads.html).
+   - Descarga el JDK 22 para tu SO.
+   - Sigue las instrucciones de instalación para tu SO.
 
 3. **Configurar JAVA_HOME**:
-   - Encuentra la ruta de instalación de Java (por ejemplo, `C:\Program Files\Java\jdk-22` en Windows).
-   - Configura la variable de entorno `JAVA_HOME` con esta ruta.
+   - Encuentra la ruta de instalación de Java (ejemplo: `C:\\Program Files\\Java\\jdk-22` en Windows).
+   - Configura `JAVA_HOME` con esta ruta.
 
-   **En Windows**:
-   - Ve a 'Propiedades del sistema' > 'Variables de entorno'.
-   - Agrega una nueva variable de sistema llamada `JAVA_HOME` y establece su valor a la ruta del JDK.
-   - Asegúrate de que la ruta del `bin` de Java esté en la variable de entorno `Path`.
+   **Windows**:
+   - 'Propiedades del sistema' > 'Variables de entorno'.
+   - Nueva variable `JAVA_HOME`, valor: ruta del JDK.
+   - Ruta del `bin` de Java en la variable `Path`.
 
-   **En macOS/Linux**:
-   - Edita tu archivo de perfil (como `~/.bash_profile` o `~/.zshrc`).
+   **macOS/Linux**:
+   - Edita `~/.bash_profile` o `~/.zshrc`.
    - Agrega `export JAVA_HOME="$(/usr/libexec/java_home -v 22)"` y `export PATH=$JAVA_HOME/bin:$PATH`.
+"""
+
+
 
 ### 💻 Instalación de Visual Studio Code y Extensiones
 1. **Instalar Visual Studio Code**:
@@ -94,25 +120,8 @@ Para asegurar un desarrollo fluido y eficiente, es crucial tener configurado cor
    - Abre VS Code y ve a las extensiones (`Ctrl+Shift+X` o `Cmd+Shift+X`).
    - Busca e instala `Spring Boot Extension Pack` y `Java Extension Pack`.
 
-## 🤝 Contribuciones
 
-Para contribuir a este proyecto:
-
-1. Crea una nueva rama:
-   ```bash
-   git checkout -b [nombre_de_tu_rama]
-   ```
-2. Realiza tus cambios y haz un commit:
-   ```bash
-   git add .
-   git commit -m "[descripción de los cambios]"
-   ```
-3. Sube la rama y abre un pull request.
 
 ## ⚖️ Licencia
 
 Este proyecto se publica bajo la licencia [Incluir tipo de licencia aquí].
-
-
-
-
