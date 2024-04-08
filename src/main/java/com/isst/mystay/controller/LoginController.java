@@ -20,7 +20,7 @@ public class LoginController {
 
 	@PostMapping
 	public ResponseEntity<?> loginYBuscarReserva(@RequestBody Map<String, Object> credentials) {
-		System.out.println(credentials);
+		// System.out.println(credentials);
 
 		String documento = (String) credentials.get("documento");
 		String numHabitacionStr = (String) credentials.get("numHabitacion");
