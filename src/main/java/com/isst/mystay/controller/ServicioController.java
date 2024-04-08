@@ -16,7 +16,7 @@ public class ServicioController {
 
 	@PostMapping
 	public ResponseEntity<Servicio> agregarServicio(@RequestBody Servicio servicio) {
-		System.out.println(servicio);
+		// System.out.println(servicio);
 		Servicio servicioGuardado = ServicioService.guardarServicio(servicio);
 		if (servicioGuardado == null) {
 			return ResponseEntity.badRequest().build();
