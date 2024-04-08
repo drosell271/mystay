@@ -54,8 +54,8 @@ const Confort = () => {
 				>
 					<img
 						className="fotos"
-						src="../almohada.png"
-						alt="imagenalmohada"
+						src="../llamarpersonal.png"
+						alt="imagenLlamarPersonal"
 					/>
 				</button>
 				<h2>Llamar al personal</h2>
