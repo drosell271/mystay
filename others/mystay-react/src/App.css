@@ -156,3 +156,7 @@ input[type="text"] {
   margin-bottom: 20px;
   color: red;
 }
+
+input[type="time"] {
+  font-size: 35px;
+}

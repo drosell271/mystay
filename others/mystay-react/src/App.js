@@ -15,6 +15,7 @@ import Transporte from './views/Transporte';
 import { Editar } from './views/Editar';
 import { Premium } from './views/Premium';
 import { Concierge } from './views/Concierge';
+import { LateCheckout } from './views/LateCheckout';
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
           <Route path='/perfil/editar' element={<Editar />} />
           <Route path='/premium' element={<Premium />} />
           <Route path='/concierge' element={<Concierge />} />
+          <Route path='/lateCheckout' element={<LateCheckout />} />
+
         </Routes>
       </div>
     </BrowserRouter>

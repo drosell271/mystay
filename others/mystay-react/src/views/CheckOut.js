@@ -1,9 +1,14 @@
 import React from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 
 export const CheckOut = () => {
+
+    const isPremium = localStorage.getItem("isPremium");
+
     return (
         <div>
             <div id='recibo'>
@@ -14,10 +19,10 @@ export const CheckOut = () => {
             </div>
 
             <div id='despedida'>
-                <p>IMPORTANTE: Devolver tarjetas de la habitación en recepción</p>
                 <p>¡Muchas gracias por su visita! Esperamos volver a verle pronto</p>
+                <Link to='/lateCheckout'><Button>Late Checkout</Button> </Link>
                 <Button variant='success'>Confirmar Check-Out</Button>
-                <Link to='/principal'><Button variant='dark'>Volver</Button></Link>
+                <Link to='/reservas'><Button variant='dark'>Volver</Button></Link>
             </div>
         </div>
     )
