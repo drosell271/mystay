@@ -67,7 +67,7 @@ public class ServicioService {
 		return servicioRepository.findAll();
 	}
 
-	public Servicio obtenerServicioPorId(@Nullable Long id) {
+	public Servicio obtenerServicioPorId(@Nullable Integer id) {
 		if (id != null) {
 			if (servicioRepository.existsById(id)) {
 				return servicioRepository.findById(id).orElse(null);
@@ -78,7 +78,7 @@ public class ServicioService {
 		return null;
 	}
 
-	public Servicio actualizarServicio(Long id, Servicio ServicioDetalles) {
+	public Servicio actualizarServicio(Integer id, Servicio ServicioDetalles) {
 		if (id == null || ServicioDetalles == null) {
 			return null;
 		}
@@ -105,7 +105,7 @@ public class ServicioService {
 		return null;
 	}
 
-	public boolean eliminarServicio(@Nullable Long id) {
+	public boolean eliminarServicio(@Nullable Integer id) {
 		if (id != null) {
 			if (servicioRepository.existsById(id)) {
 				servicioRepository.deleteById(id);

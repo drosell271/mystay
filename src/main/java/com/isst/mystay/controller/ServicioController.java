@@ -31,7 +31,7 @@ public class ServicioController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Servicio> obtenerServicioPorId(@PathVariable Long id) {
+	public ResponseEntity<Servicio> obtenerServicioPorId(@PathVariable Integer id) {
 		Servicio Servicio = ServicioService.obtenerServicioPorId(id);
 		if (Servicio == null) {
 			return ResponseEntity.notFound().build();
@@ -42,7 +42,8 @@ public class ServicioController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Servicio> actualizarServicio(@PathVariable Long id, @RequestBody Servicio ServicioDetalles) {
+	public ResponseEntity<Servicio> actualizarServicio(@PathVariable Integer id,
+			@RequestBody Servicio ServicioDetalles) {
 		Servicio ServicioActualizado = ServicioService.actualizarServicio(id, ServicioDetalles);
 		if (ServicioActualizado == null) {
 			return ResponseEntity.notFound().build();
@@ -53,7 +54,7 @@ public class ServicioController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> eliminarServicio(@PathVariable Long id) {
+	public ResponseEntity<?> eliminarServicio(@PathVariable Integer id) {
 		if (ServicioService.eliminarServicio(id)) {
 			return ResponseEntity.ok().build();
 		} else {

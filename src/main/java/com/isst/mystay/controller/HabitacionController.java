@@ -36,7 +36,8 @@ public class HabitacionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Habitacion> actualizarHabitacion(@PathVariable long id, @RequestBody Habitacion detallesHabitacion) {
+    public ResponseEntity<Habitacion> actualizarHabitacion(@PathVariable long id,
+            @RequestBody Habitacion detallesHabitacion) {
         Habitacion habitacionActualizada = habitacionService.actualizarHabitacion(id, detallesHabitacion);
         if (habitacionActualizada == null) {
             return ResponseEntity.notFound().build();

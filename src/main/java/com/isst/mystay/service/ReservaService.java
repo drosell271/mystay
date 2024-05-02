@@ -3,13 +3,16 @@ package com.isst.mystay.service;
 import com.isst.mystay.model.Cliente;
 import com.isst.mystay.model.Habitacion;
 import com.isst.mystay.model.Reserva;
+import com.isst.mystay.model.Servicio;
 import com.isst.mystay.repository.ClienteRepository;
 import com.isst.mystay.repository.HabitacionRepository;
 import com.isst.mystay.repository.ReservaRepository;
+import com.isst.mystay.repository.ServicioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.Date;
 
 import org.springframework.lang.Nullable;
 
@@ -24,6 +27,9 @@ public class ReservaService {
 
 	@Autowired
 	private HabitacionRepository habitacionRepository;
+
+	@Autowired
+	private ServicioRepository servicioRepository;
 
 	public Optional<Long> buscarIdReservaPorDocumentoYNumeroHabitacion(String documento, int numeroHabitacion) {
 		List<Cliente> clientes = clienteRepository.findAll();
@@ -63,7 +69,7 @@ public class ReservaService {
 		return reservaRepository.findAll();
 	}
 
-	public Reserva obtenerReservaPorId(@Nullable Long id) {
+	public Reserva obtenerReservaPorId(@Nullable Integer id) {
 		if (id != null) {
 			if (reservaRepository.existsById(id)) {
 				return reservaRepository.findById(id).orElse(null);
@@ -74,7 +80,7 @@ public class ReservaService {
 		return null;
 	}
 
-	public Reserva actualizarReserva(Long id, Reserva ReservaDetalles) {
+	public Reserva actualizarReserva(Integer id, Reserva ReservaDetalles) {
 		if (id == null || ReservaDetalles == null) {
 			return null;
 		}
@@ -95,7 +101,7 @@ public class ReservaService {
 		return null;
 	}
 
-	public boolean eliminarReserva(@Nullable Long id) {
+	public boolean eliminarReserva(@Nullable Integer id) {
 		if (id != null) {
 			if (reservaRepository.existsById(id)) {
 				reservaRepository.deleteById(id);
@@ -105,5 +111,30 @@ public class ReservaService {
 			}
 		}
 		return false;
+	}
+
+	public Reserva updateReservaTotal(Integer reservaId) {
+		Reserva reserva = reservaRepository.findById(reservaId)
+				.orElseThrow(() -> new RuntimeException("Reserva no encontrada"));
+		double total = servicioRepository.findByReservaId(reservaId)
+				.stream()
+				.mapToDouble(Servicio::getPrecio)
+				.sum();
+		reserva.setCuenta(total);
+		return reservaRepository.save(reserva);
+	}
+
+	public Reserva lateCheckOut(Integer reservaId, Date checkoutTime) {
+		Reserva reserva = reservaRepository.findById(reservaId)
+				.orElseThrow(() -> new RuntimeException("Reserva no encontrada"));
+		reserva.setFechaSalida(checkoutTime);
+		return reservaRepository.save(reserva);
+	}
+
+	public Reserva lateCheckIn(Integer reservaId, Date checkinTime) {
+		Reserva reserva = reservaRepository.findById(reservaId)
+				.orElseThrow(() -> new RuntimeException("Reserva no encontrada"));
+		reserva.setFechaEntrada(checkinTime);
+		return reservaRepository.save(reserva);
 	}
 }
