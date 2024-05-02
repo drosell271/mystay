@@ -13,7 +13,8 @@ import Incidencias from './views/Incidencias';
 import Perfil from './views/Perfil';
 import Transporte from './views/Transporte';
 import { Editar } from './views/Editar';
-
+import { Premium } from './views/Premium';
+import { Concierge } from './views/Concierge';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
           <Route path='/perfil' element={<Perfil />} />
           <Route path='/transporte' element={<Transporte />} />
           <Route path='/perfil/editar' element={<Editar />} />
+          <Route path='/premium' element={<Premium />} />
+          <Route path='/concierge' element={<Concierge />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -62,7 +62,7 @@ const Transporte = () => {
 
   return (
     <div>
-      <div id='iconostransporte'>
+      <div id='iconosTransporte'>
         <div>
           <button className='botontr' onClick={() => { handleSubmit("Uber") }}><img className="fotos" src="../uber.png" alt="imagenuber" /></button>
           <h2>Uber</h2>
