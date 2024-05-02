@@ -42,6 +42,7 @@ const Perfil = () => {
           esPremium: data.esPremium
         };
         setDatosPerfil(datosCliente);
+        localStorage.setItem("id", data.id);
 
       } else {
         console.log("Error en los datos");
