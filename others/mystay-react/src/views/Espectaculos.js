@@ -14,41 +14,42 @@ export const Espectaculos = () => {
     const [hora, setHora] = useState("");
 
     const handleSubmit = async () => {
-        //     const url = "http://localhost:8080/servicios";
+        const url = "http://localhost:8080/servicios";
 
-        //     const idReserva = localStorage.getItem("token");
+        const idReserva = localStorage.getItem("token");
+        const fechaYhora = String(fecha) + String(hora);
 
-        //     try {
-        //         const response = await fetch(url, {
-        //             method: "POST",
-        //             headers: {
-        //                 "Content-Type": "application/json",
-        //             },
-        //             body: JSON.stringify({
-        //                 nombre: recurso,
-        //                 descripcion: servicio,
-        //                 recursoNecesario: recurso,
-        //                 tipoEmpleado: "CAMARERO",
-        //                 duracion: 3.0,
-        //                 precio: 10.0,
-        //                 esPremium: false,
-        //                 satisfecho: false,
-        //                 idEmpleado: null,
-        //                 idRecurso: null,
-        //                 idReserva: idReserva,
-        //             }),
-        //         });
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nombre: espectaculo,
+                    descripcion: fechaYhora,
+                    recursoNecesario: "OFICINA",
+                    tipoEmpleado: "RECEPCION",
+                    duracion: 3.0,
+                    precio: precio,
+                    esPremium: true,
+                    satisfecho: false,
+                    idEmpleado: null,
+                    idRecurso: null,
+                    idReserva: idReserva,
+                }),
+            });
 
-        //         if (response.ok) {
-        //             alert(
-        //                 `Ha solicitado: ${servicio}\nVendrá un camarero a atenderle lo antes posible.`
-        //             );
-        //         } else {
-        //             alert("No se encontró el recurso solicitado o no está abierto en este momento.");
-        //         }
-        //     } catch (error) {
-        //         console.log("Error al conectar con el servidor");
-        //     }
+            if (response.ok) {
+                alert(
+                    `Su solicitud ha sido procesada.\nSus entradas se han adquirido.`
+                );
+            } else {
+                alert("No se encontró el recurso solicitado o no está abierto en este momento.");
+            }
+        } catch (error) {
+            console.log("Error al conectar con el servidor");
+        }
     };
 
 

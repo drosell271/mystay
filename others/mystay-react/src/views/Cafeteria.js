@@ -7,7 +7,6 @@ const Cafeteria = () => {
 
 	// CONSULTA A LA API
 	const handleSubmit = async (servicio, recurso) => {
-		console.log(`servicio: ${servicio}\nrecurso: ${recurso}`);
 		const url = "http://localhost:8080/servicios";
 
 		const idReserva = localStorage.getItem("token");

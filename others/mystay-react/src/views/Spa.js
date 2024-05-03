@@ -13,7 +13,44 @@ export const Spa = () => {
     const [hora, setHora] = useState("");
 
     const handleSubmit = async () => {
+        const url = "http://localhost:8080/servicios";
 
+        const idReserva = localStorage.getItem("token");
+        const fechaYhora = String(fecha) + String(hora);
+
+
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nombre: servicio,
+                    descripcion: fechaYhora,
+                    recursoNecesario: "OFICINA",
+                    tipoEmpleado: "RECEPCION",
+                    duracion: 10.0,
+                    precio: precio,
+                    esPremium: true,
+                    satisfecho: false,
+                    idEmpleado: null,
+                    idRecurso: null,
+                    idReserva: idReserva
+                }),
+
+            });
+
+
+            if (response.ok) {
+                alert("Su petición ha sido enviada correctamente y pronto será atendido.");
+
+            } else {
+                alert("Su petición ha sido enviada, pero ahora mismo no podemos atenderle.");
+            }
+        } catch (error) {
+            console.log("Error al conectar con el servidor");
+        }
     }
 
     return (

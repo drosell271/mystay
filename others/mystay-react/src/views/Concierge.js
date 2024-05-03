@@ -17,44 +17,43 @@ export const Concierge = () => {
     }
 
     const handleSubmit = async (e) => {
-        //     console.log(`incidencia: ${incidencia}`);
-        //     const url = "http://localhost:8080/servicios";
+        const url = "http://localhost:8080/servicios";
 
-        //     const idReserva = localStorage.getItem("token");
-
-
-        //     try {
-        //         const response = await fetch(url, {
-        //             method: "POST",
-        //             headers: {
-        //                 "Content-Type": "application/json",
-        //             },
-        //             body: JSON.stringify({
-        //                 "nombre": "INCIDENCIAS",
-        //                 "descripcion": incidencia,
-        //                 "recursoNecesario": "INCIDENCIAS",
-        //                 "tipoEmpleado": "MANTENIMIENTO",
-        //                 "duracion": 5.0,
-        //                 "precio": 0.00,
-        //                 "esPremium": false,
-        //                 "satisfecho": false,
-        //                 "idEmpleado": null,
-        //                 "idRecurso": null,
-        //                 "idReserva": idReserva
-        //             }),
-
-        //         });
+        const idReserva = localStorage.getItem("token");
 
 
-        //         if (response.ok) {
-        //             alert("Su incidencia ha sido enviada y pronto será evaluada");
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nombre: "CONCIERGE",
+                    descripcion: solicitud,
+                    recursoNecesario: "OFICINA",
+                    tipoEmpleado: "CONCIERGE",
+                    duracion: 10.0,
+                    precio: 0.00,
+                    esPremium: true,
+                    satisfecho: false,
+                    idEmpleado: null,
+                    idRecurso: null,
+                    idReserva: idReserva
+                }),
 
-        //         } else {
-        //             alert("La incidencia ha sido enviada, pero ahora mismo no podemos atenderle.");
-        //         }
-        //     } catch (error) {
-        //         console.log("Error al conectar con el servidor");
-        //     }
+            });
+
+
+            if (response.ok) {
+                alert("Su petición ha sido enviada correctamente y pronto será atendido.");
+
+            } else {
+                alert("Su petición ha sido enviada, pero ahora mismo no podemos atenderle.");
+            }
+        } catch (error) {
+            console.log("Error al conectar con el servidor");
+        }
     };
 
     return (

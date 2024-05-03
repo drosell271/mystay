@@ -10,8 +10,7 @@ export const LateCheckout = () => {
 
 
     const handleSubmit = async (e) => {
-        const id = localStorage.getItem("id");
-        const url = `http://localhost:8080/reservas/${id}/late-checkout/{checkoutTime}`;
+        const url = `http://localhost:8080/reservas/{id}/late-checkout/{checkoutTime}`;
 
         const fechaActual = new Date();
 
