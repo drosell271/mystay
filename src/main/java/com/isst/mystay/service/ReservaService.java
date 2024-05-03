@@ -31,7 +31,26 @@ public class ReservaService {
 	@Autowired
 	private ServicioRepository servicioRepository;
 
-	public Optional<Long> buscarIdReservaPorDocumentoYNumeroHabitacion(String documento, int numeroHabitacion) {
+	public class ResultadoReserva {
+		private Long idReserva;
+		private boolean esPremium;
+
+		public ResultadoReserva(Long idReserva, boolean esPremium) {
+			this.idReserva = idReserva;
+			this.esPremium = esPremium;
+		}
+
+		public Long getIdReserva() {
+			return idReserva;
+		}
+
+		public boolean isEsPremium() {
+			return esPremium;
+		}
+	}
+
+	public Optional<ResultadoReserva> buscarIdReservaPorDocumentoYNumeroHabitacion(String documento,
+			int numeroHabitacion) {
 		List<Cliente> clientes = clienteRepository.findAll();
 		Cliente cliente = clientes.stream()
 				.filter(c -> c.getDocumento().equals(documento))
@@ -51,11 +70,17 @@ public class ReservaService {
 			return Optional.empty();
 
 		List<Reserva> reservas = reservaRepository.findAll();
-		return reservas.stream()
-				.filter(r -> r.getClienteId().equals(cliente.getId())
-						&& r.getHabitacionId().equals(habitacion.getId()))
+		Reserva reserva = reservas.stream()
+				.filter(r -> r.getClienteId().equals(cliente.getId()) && r.getHabitacionId().equals(habitacion.getId()))
 				.findFirst()
-				.map(Reserva::getId);
+				.orElse(null);
+
+		if (reserva == null || !reserva.getFechaSalida().after(new Date())
+				|| !reserva.getFechaEntrada().before(new Date()))
+			return Optional.empty();
+
+		return Optional.of(new ResultadoReserva(reserva.getId(), cliente.getEsPremium()));
+
 	}
 
 	public Reserva guardarReserva(@Nullable Reserva Reserva) {

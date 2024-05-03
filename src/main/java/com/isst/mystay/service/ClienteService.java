@@ -51,7 +51,7 @@ public class ClienteService {
 			clienteActualizado.setCorreo(clienteDetalles.getCorreo());
 			clienteActualizado.setTelefono(clienteDetalles.getTelefono());
 			clienteActualizado.setMetodoPago(clienteDetalles.getMetodoPago());
-			clienteActualizado.setEsPremium(clienteDetalles.isEsPremium());
+			clienteActualizado.setEsPremium(clienteDetalles.getEsPremium());
 			return clienteRepository.save(clienteActualizado);
 		}
 		return null;

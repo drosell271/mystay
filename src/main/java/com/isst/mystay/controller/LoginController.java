@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.isst.mystay.service.ReservaService;
+import com.isst.mystay.service.ReservaService.ResultadoReserva;
 
 import java.util.Map;
 import java.util.Optional;
@@ -20,8 +21,6 @@ public class LoginController {
 
 	@PostMapping
 	public ResponseEntity<?> loginYBuscarReserva(@RequestBody Map<String, Object> credentials) {
-		// System.out.println(credentials);
-
 		String documento = (String) credentials.get("documento");
 		String numHabitacionStr = (String) credentials.get("numHabitacion");
 		Integer numHabitacion = null;
@@ -29,13 +28,12 @@ public class LoginController {
 		try {
 			numHabitacion = Integer.parseInt(numHabitacionStr);
 		} catch (NumberFormatException e) {
-			// Maneja la excepción si la cadena no se puede convertir en un entero
 			return ResponseEntity.badRequest().body("Número de habitación no válido");
 		}
 
-		Optional<Long> idReserva = reservaService.buscarIdReservaPorDocumentoYNumeroHabitacion(documento,
+		Optional<ResultadoReserva> resultado = reservaService.buscarIdReservaPorDocumentoYNumeroHabitacion(documento,
 				numHabitacion);
-		return idReserva.map(ResponseEntity::ok)
+		return resultado.map(res -> ResponseEntity.ok().body(res))
 				.orElseGet(() -> ResponseEntity.notFound().build());
 	}
 }

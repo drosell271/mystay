@@ -47,7 +47,7 @@ public class Cliente {
 		return metodoPago;
 	}
 
-	public boolean isEsPremium() {
+	public boolean getEsPremium() {
 		return esPremium;
 	}
 
