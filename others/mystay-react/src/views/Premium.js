@@ -8,19 +8,19 @@ export const Premium = () => {
         <div>
             <div id='iconosPremium'>
                 <div>
-                    <Link to="concierge" className='botontr'><img className="fotos" src="../uber.png" alt="imagenuber" /></Link>
+                    <Link to="concierge" className='botontr'><img className="fotos" src="../concierge.png" alt="imagenconcierge" /></Link>
                     <h2>Concierge</h2>
                 </div>
                 <div>
-                    <Link to="espectaculos" className='botontr'><img className="fotos" src="../cabify.png" alt="imagencabify" /></Link>
+                    <Link to="espectaculos" className='botontr'><img className="fotos" src="../espectaculos.png" alt="imagenespectaculos" /></Link>
                     <h2>Espectáculos</h2>
                 </div>
                 <div>
-                    <Link to="spa" className='botontr'><img className="fotos" src="../taxi.png" alt="imagentaxi" /></Link>
+                    <Link to="spa" className='botontr'><img className="fotos" src="../spa.png" alt="imagenspa" /></Link>
                     <h2>SPA</h2>
                 </div>
                 <div>
-                    <Link to="turismo" className='botontr'><img className="fotos" src="../taxi.png" alt="imagentaxi" /></Link>
+                    <Link to="turismo" className='botontr'><img className="fotos" src="../guiaturistico.png" alt="imagenguiaturistico" /></Link>
                     <h2>Guía Turístico</h2>
                 </div>
 
