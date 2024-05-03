@@ -71,7 +71,7 @@ export const Editar = () => {
                     <input id='editaMPago' onChange={(e) => { setMetodoPago(e.target.value) }} type='text'></input>
                 </div>
                 <div id='confirmacion'></div>
-                <Button onClick={handleSubmit()}>Confirmar</Button>
+                <Button variant='success' onClick={handleSubmit()}>Confirmar</Button>
             </div>
             <Link to='/perfil'><Button variant='dark'>Volver</Button></Link>
         </div>

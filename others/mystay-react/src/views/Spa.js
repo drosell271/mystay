@@ -34,7 +34,7 @@ export const Spa = () => {
             <h4>Ha elegido: <b>{servicio.toUpperCase()}</b></h4>
             <h4>El día: <b>{fecha}</b> , a las: <b>{hora}</b></h4>
             <h4>El precio es de: <b>{precio} €</b></h4>
-            <Button onClick={() => handleSubmit()}>Confirmar</Button>
+            <Button variant='success' onClick={() => handleSubmit()}>Confirmar</Button>
             <Link to='/premium'><Button className='atras' variant="dark">Volver</Button></Link>
         </div>
     )

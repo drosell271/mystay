@@ -67,7 +67,7 @@ export const Concierge = () => {
                     placeholder="Escriba su solicitud"
                     onChange={e => { setSolicitud(e.target.value) }}
                 />
-                <Button className='enviar' variant="dark" onClick={() => gestionaSolicitud()}>Enviar</Button>
+                <Button className='enviar' variant="success" onClick={() => gestionaSolicitud()}>Enviar</Button>
                 <Link to='/premium'><Button className='atras' variant="dark">Volver</Button></Link>
             </div>
         </div>

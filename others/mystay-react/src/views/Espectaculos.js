@@ -86,7 +86,7 @@ export const Espectaculos = () => {
             <h4>El día: <b>{fecha}</b> , a las: <b>{hora}</b></h4>
             <h4>Número de personas: <b>{numPersonas}</b></h4>
             <h4>El precio es de: <b>{precio * numPersonas} €</b></h4>
-            <Button onClick={() => handleSubmit()}>Confirmar</Button>
+            <Button variant='success' onClick={() => handleSubmit()}>Confirmar</Button>
             <Link to='/premium'><Button className='atras' variant="dark">Volver</Button></Link>
         </div>
     )

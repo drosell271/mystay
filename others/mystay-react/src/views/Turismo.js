@@ -19,7 +19,7 @@ export const Turismo = () => {
             <input type='date' onChange={(e) => { setFecha(e.target.value) }} />
             <input type='time' onChange={(e) => { setHora(e.target.value) }} />
             <h4>Solicitará un guía turístico el día: <b>{fecha}</b> , a las: <b>{hora}</b></h4>
-            <Button onClick={() => handleSubmit()}>Confirmar</Button>
+            <Button variant='success' onClick={() => handleSubmit()}>Confirmar</Button>
             <Link to='/premium'><Button className='atras' variant="dark">Volver</Button></Link>
         </div>
     )
