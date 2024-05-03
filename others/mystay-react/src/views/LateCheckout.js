@@ -50,7 +50,7 @@ export const LateCheckout = () => {
     return (
         <div className='ordenados'>
             <h4>¿A qué hora desea abandonar la habitación?</h4>
-            <input type='time' onChange={(e) => setHoraOut(e.target.value)} />
+            <input id='horaCheckout' type='time' onChange={(e) => setHoraOut(e.target.value)} />
             <Button onClick={() => handleSubmit()}>Confirmar</Button>
             <Link to='/reservas/checkout'><Button variant='dark'>Volver</Button></Link>
         </div>

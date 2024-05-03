@@ -157,6 +157,17 @@ input[type="text"] {
   color: red;
 }
 
-input[type="time"] {
+#horaCheckout {
   font-size: 35px;
+}
+
+#concierge {
+  width: 500px;
+  height: 100px;
+}
+
+.enFila {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
 }

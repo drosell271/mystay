@@ -16,6 +16,9 @@ import { Editar } from './views/Editar';
 import { Premium } from './views/Premium';
 import { Concierge } from './views/Concierge';
 import { LateCheckout } from './views/LateCheckout';
+import { Espectaculos } from './views/Espectaculos';
+import { Spa } from './views/Spa';
+import { Turismo } from './views/Turismo';
 
 function App() {
   return (
@@ -37,8 +40,11 @@ function App() {
           <Route path='/transporte' element={<Transporte />} />
           <Route path='/perfil/editar' element={<Editar />} />
           <Route path='/premium' element={<Premium />} />
-          <Route path='/concierge' element={<Concierge />} />
-          <Route path='/lateCheckout' element={<LateCheckout />} />
+          <Route path='/premium/concierge' element={<Concierge />} />
+          <Route path='/premium/espectaculos' element={<Espectaculos />} />
+          <Route path='/premium/spa' element={<Spa />} />
+          <Route path='/premium/turismo' element={<Turismo />} />
+          <Route path='/reservas/checkout/lateCheckout' element={<LateCheckout />} />
 
         </Routes>
       </div>

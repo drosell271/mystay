@@ -8,20 +8,20 @@ export const Premium = () => {
         <div>
             <div id='iconosPremium'>
                 <div>
-                    <button className='botontr' ><img className="fotos" src="../uber.png" alt="imagenuber" /></button>
+                    <Link to="concierge" className='botontr'><img className="fotos" src="../uber.png" alt="imagenuber" /></Link>
                     <h2>Concierge</h2>
                 </div>
                 <div>
-                    <button className='botontr'><img className="fotos" src="../cabify.png" alt="imagencabify" /></button>
+                    <Link to="espectaculos" className='botontr'><img className="fotos" src="../cabify.png" alt="imagencabify" /></Link>
                     <h2>Espectáculos</h2>
                 </div>
                 <div>
-                    <button className='botontr' ><img className="fotos" src="../taxi.png" alt="imagentaxi" /></button>
+                    <Link to="spa" className='botontr'><img className="fotos" src="../taxi.png" alt="imagentaxi" /></Link>
                     <h2>SPA</h2>
                 </div>
                 <div>
-                    <button className='botontr' ><img className="fotos" src="../taxi.png" alt="imagentaxi" /></button>
-                    <h2>Turismo</h2>
+                    <Link to="turismo" className='botontr'><img className="fotos" src="../taxi.png" alt="imagentaxi" /></Link>
+                    <h2>Guía Turístico</h2>
                 </div>
 
             </div>
