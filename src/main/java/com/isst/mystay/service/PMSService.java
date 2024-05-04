@@ -76,8 +76,12 @@ public class PMSService {
 						Arrays.asList(LocalTime.MIDNIGHT, LocalTime.of(4, 0), LocalTime.of(4, 0), LocalTime.of(4, 0),
 								LocalTime.of(4, 0), LocalTime.of(4, 0), LocalTime.MIDNIGHT),
 						Arrays.asList(LocalTime.MIDNIGHT, LocalTime.of(16, 0), LocalTime.of(16, 0), LocalTime.of(16, 0),
-								LocalTime.of(16, 0), LocalTime.of(16, 0), LocalTime.MIDNIGHT))
-
+								LocalTime.of(16, 0), LocalTime.of(16, 0), LocalTime.MIDNIGHT)),
+                new Recurso("OFICINA", Arrays.asList(true, true, true, true, true, true, true),  // Abierto todos los días
+                        Arrays.asList(LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0), 
+                                LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0)),  
+                        Arrays.asList(LocalTime.of(23, 59), LocalTime.of(23, 59), LocalTime.of(23, 59), 
+                                LocalTime.of(23, 59), LocalTime.of(23, 59), LocalTime.of(23, 59), LocalTime.of(23, 59)))  
 		);
 
 		List<Empleado> empleados = Arrays.asList(
@@ -143,6 +147,47 @@ public class PMSService {
 						Arrays.asList(LocalTime.MIDNIGHT, LocalTime.MIDNIGHT, LocalTime.of(17, 0), LocalTime.of(17, 0),
 								LocalTime.of(17, 0), LocalTime.of(17, 0), LocalTime.MIDNIGHT)));
 
+                new Empleado("ALICIA", "CONCIERGE", 
+                        Arrays.asList(true, true, true, true, true, true, true),  // Trabaja todos los días
+                        Arrays.asList(LocalTime.of(7, 0), LocalTime.of(7, 0), LocalTime.of(7, 0), 
+                                              LocalTime.of(7, 0), LocalTime.of(7, 0), LocalTime.of(7, 0), LocalTime.of(7, 0)),  
+                        Arrays.asList(LocalTime.of(15, 0), LocalTime.of(15, 0), LocalTime.of(15, 0), 
+                                              LocalTime.of(15, 0), LocalTime.of(15, 0), LocalTime.of(15, 0), LocalTime.of(15, 0)));  
+                            
+                new Empleado("BRUNO", "CONCIERGE", 
+                        Arrays.asList(true, true, true, true, true, true, true),  // Trabaja todos los días
+                        Arrays.asList(LocalTime.of(15, 0), LocalTime.of(15, 0), LocalTime.of(15, 0), 
+                                              LocalTime.of(15, 0), LocalTime.of(15, 0), LocalTime.of(15, 0), LocalTime.of(15, 0)),  
+                        Arrays.asList(LocalTime.of(23, 0), LocalTime.of(23, 0), LocalTime.of(23, 0), 
+                                              LocalTime.of(23, 0), LocalTime.of(23, 0), LocalTime.of(23, 0), LocalTime.of(23, 0)));  
+                            
+                new Empleado("CARLA", "CONCIERGE", 
+                        Arrays.asList(true, true, true, true, true, true, true),  // Trabaja todos los días
+                        Arrays.asList(LocalTime.of(23, 0), LocalTime.of(23, 0), LocalTime.of(23, 0), 
+                                              LocalTime.of(23, 0), LocalTime.of(23, 0), LocalTime.of(23, 0), LocalTime.of(23, 0)),  
+                        Arrays.asList(LocalTime.of(7, 0), LocalTime.of(7, 0), LocalTime.of(7, 0), 
+                                              LocalTime.of(7, 0), LocalTime.of(7, 0), LocalTime.of(7, 0), LocalTime.of(7, 0)));  
+
+                new Empleado("SOFIA", "RECEPCION", 
+                        Arrays.asList(true, true, true, true, true, true, true),  // Trabaja todos los días
+                        Arrays.asList(LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0), 
+                                                LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0)),  
+                        Arrays.asList(LocalTime.of(8, 0), LocalTime.of(8, 0), LocalTime.of(8, 0), 
+                                                LocalTime.of(8, 0), LocalTime.of(8, 0), LocalTime.of(8, 0), LocalTime.of(8, 0)));  
+                                          
+                new Empleado("ROBERTO", "RECEPCION", 
+                        Arrays.asList(true, true, true, true, true, true, true),  // Trabaja todos los días
+                        Arrays.asList(LocalTime.of(8, 0), LocalTime.of(8, 0), LocalTime.of(8, 0), 
+                                                LocalTime.of(8, 0), LocalTime.of(8, 0), LocalTime.of(8, 0), LocalTime.of(8, 0)),  
+                        Arrays.asList(LocalTime.of(16, 0), LocalTime.of(16, 0), LocalTime.of(16, 0), 
+                                                LocalTime.of(16, 0), LocalTime.of(16, 0), LocalTime.of(16, 0), LocalTime.of(16, 0)));  
+                                          
+                new Empleado("LAURA", "RECEPCION", 
+                        Arrays.asList(true, true, true, true, true, true, true),  // Trabaja todos los días
+                        Arrays.asList(LocalTime.of(16, 0), LocalTime.of(16, 0), LocalTime.of(16, 0), 
+                                                LocalTime.of(16, 0), LocalTime.of(16, 0), LocalTime.of(16, 0), LocalTime.of(16, 0)),  
+                        Arrays.asList(LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0), 
+                                                LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0), LocalTime.of(0, 0)));  
 		for (Recurso recurso : recursos) {
 			if (recurso.nombre.equals(recursoNecesario) && recurso.diasAbierto.get(hoyIndex)
 					&& horaActual.isAfter(recurso.horaApertura.get(hoyIndex))
