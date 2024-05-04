@@ -49,7 +49,8 @@ export const Login = () => {
 
 			if (response.ok) {
 				console.log(data);
-				localStorage.setItem("token", data);
+				localStorage.setItem("token", data.idReserva);
+				localStorage.setItem("isPremium", data.esPremium);
 				navigate("/principal");
 			} else {
 				setError("Error de autenticación");
