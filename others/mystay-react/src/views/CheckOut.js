@@ -7,29 +7,9 @@ import { useState, useEffect } from "react";
 export const CheckOut = () => {
 	const isPremium = localStorage.getItem("isPremium");
 
-	const PrecioEstandar = 60;
-	const PrecioPremium = 120;
-
-	const [tipoHabitacion, setTipoHabitacion] = useState("estandar");
-	const [numPersonas, setNumPersonas] = useState(1);
-	const [fechaEntrada, setFechaEntrada] = useState("");
-	const [fechaSalida, setFechaSalida] = useState("");
-
 	const [cuenta, setCuenta] = useState(0);
 
 	const handleReservation = async () => {
-		const idCliente = localStorage.getItem("clienteId");
-		const precio =
-			tipoHabitacion === "ESTANDAR"
-				? PrecioEstandar * numPersonas
-				: PrecioPremium * numPersonas;
-		// const reservaInfo = {
-		// 	fechaEntrada: `${fechaEntrada}T10:00:00.000+00:00`,
-		// 	fechaSalida: `${fechaSalida}T10:00:00.000+00:00`,
-		// 	cuenta: precio,
-		// 	clienteId: idCliente,
-		// 	habitacionId: 1,
-		// };
 
 		try {
 			const response = await fetch(`http://localhost:8080/reservas`, {
@@ -63,8 +43,6 @@ export const CheckOut = () => {
 					"Content-Type": "application/json",
 				},
 			});
-
-			const data = await response.json();
 
 			if (response.ok) {
 				alert(`Ha realizado el CheckOut correctamente.`);
@@ -102,7 +80,7 @@ export const CheckOut = () => {
 					<div></div>
 				)}
 
-				<Button variant="success" onClick={handleSubmit()}>Confirmar Check-Out</Button>
+				<Button variant="success" onClick={() => handleSubmit()}>Confirmar Check-Out</Button>
 				<Link to="/reservas">
 					<Button variant="dark">Volver</Button>
 				</Link>

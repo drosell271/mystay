@@ -116,7 +116,7 @@ export const NuevaReserva = () => {
 							: PrecioPremium * numPersonas}{" "}
 						€
 					</h2>
-					<Button variant="success" onClick={handleReservation}>
+					<Button variant="success" onClick={() => handleReservation()}>
 						Confirmar Reserva
 					</Button>
 				</div>
