@@ -26,6 +26,9 @@ public class ServicioService {
 	@Autowired
 	private EmpleadoRepository empleadoRepository;
 
+	@Autowired
+	private ReservaService ReservaService;
+
 	public Servicio guardarServicio(@Nullable Servicio Servicio) {
 		com.isst.mystay.service.PMSService pmsService = new PMSService();
 
@@ -56,6 +59,7 @@ public class ServicioService {
 				if (recurso == null || empleado == null)
 					return null;
 
+				ReservaService.updateReservaTotal(Servicio.getIdReserva());
 				return servicioRepository.save(Servicio);
 			}
 			return null;

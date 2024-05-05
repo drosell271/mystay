@@ -27,12 +27,12 @@ public class EmpleadoService {
         return empleadoRepository.findAll();
     }
 
-    public Empleado obtenerEmpleadoPorId(@Nullable long id) {
+    public Empleado obtenerEmpleadoPorId(@Nullable Integer id) {
         Optional<Empleado> empleado = empleadoRepository.findById(id);
         return empleado.orElse(null);
     }
 
-    public Empleado actualizarEmpleado(long id, Empleado empleadoDetalles) {
+    public Empleado actualizarEmpleado(Integer id, Empleado empleadoDetalles) {
         Optional<Empleado> empleadoExistente = empleadoRepository.findById(id);
 
         if (empleadoExistente.isPresent()) {
@@ -47,7 +47,7 @@ public class EmpleadoService {
         return null;
     }
 
-    public boolean eliminarEmpleado(long id) {
+    public boolean eliminarEmpleado(Integer id) {
         if (empleadoRepository.existsById(id)) {
             empleadoRepository.deleteById(id);
             return true;

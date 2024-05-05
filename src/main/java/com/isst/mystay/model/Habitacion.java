@@ -10,31 +10,65 @@ public class Habitacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     private Integer numero;
     private String tipo;
     private Integer numCamas;
     private Double precio;
-    private long hotelId;
+    private Integer hotelId;
 
     // Constructor por defecto
     public Habitacion() {
     }
 
     // Getters
-    public long getId() { return id; }
-    public Integer getNumero() { return numero; }
-    public String getTipo() { return tipo; }
-    public Integer getNumCamas() { return numCamas; }
-    public Double getPrecio() { return precio; }
-    public long getHotelId() { return hotelId; }
+    public Integer getId() {
+        return id;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public Integer getNumCamas() {
+        return numCamas;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public Integer getHotelId() {
+        return hotelId;
+    }
 
     // Setters
-    public void setId(long id) { this.id = id; }
-    public void setNumero(Integer numero) { this.numero = numero; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
-    public void setNumCamas(Integer numCamas) { this.numCamas = numCamas; }
-    public void setPrecio(Double precio) { this.precio = precio; }
-    public void setHotelId(long hotelId) { this.hotelId = hotelId; }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setNumCamas(Integer numCamas) {
+        this.numCamas = numCamas;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public void setHotelId(Integer hotelId) {
+        this.hotelId = hotelId;
+    }
 }

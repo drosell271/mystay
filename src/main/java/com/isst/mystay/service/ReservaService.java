@@ -32,20 +32,26 @@ public class ReservaService {
 	private ServicioRepository servicioRepository;
 
 	public class ResultadoReserva {
-		private Long idReserva;
+		private Integer idReserva;
 		private boolean esPremium;
+		private Integer clienteId;
 
-		public ResultadoReserva(Long idReserva, boolean esPremium) {
+		public ResultadoReserva(Integer idReserva, boolean esPremium, Integer clienteId) {
 			this.idReserva = idReserva;
 			this.esPremium = esPremium;
+			this.clienteId = clienteId;
 		}
 
-		public Long getIdReserva() {
+		public Integer getIdReserva() {
 			return idReserva;
 		}
 
 		public boolean isEsPremium() {
 			return esPremium;
+		}
+
+		public Integer getClienteId() {
+			return clienteId;
 		}
 	}
 
@@ -79,7 +85,7 @@ public class ReservaService {
 				|| !reserva.getFechaEntrada().before(new Date()))
 			return Optional.empty();
 
-		return Optional.of(new ResultadoReserva(reserva.getId(), cliente.getEsPremium()));
+		return Optional.of(new ResultadoReserva(reserva.getId(), cliente.getEsPremium(), cliente.getId()));
 
 	}
 

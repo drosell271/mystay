@@ -48,9 +48,9 @@ export const Login = () => {
 			const data = await response.json();
 
 			if (response.ok) {
-				console.log(data);
 				localStorage.setItem("token", data.idReserva);
 				localStorage.setItem("isPremium", data.esPremium);
+				localStorage.setItem("clienteId", data.clienteId);
 				navigate("/principal");
 			} else {
 				setError("Error de autenticación");

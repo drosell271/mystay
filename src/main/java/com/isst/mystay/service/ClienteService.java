@@ -26,7 +26,7 @@ public class ClienteService {
 		return clienteRepository.findAll();
 	}
 
-	public Cliente obtenerClientePorId(@Nullable Long id) {
+	public Cliente obtenerClientePorId(@Nullable Integer id) {
 		if (id != null) {
 			if (clienteRepository.existsById(id)) {
 				return clienteRepository.findById(id).orElse(null);
@@ -37,7 +37,7 @@ public class ClienteService {
 		return null;
 	}
 
-	public Cliente actualizarCliente(Long id, Cliente clienteDetalles) {
+	public Cliente actualizarCliente(Integer id, Cliente clienteDetalles) {
 		if (id == null || clienteDetalles == null) {
 			return null;
 		}
@@ -57,7 +57,7 @@ public class ClienteService {
 		return null;
 	}
 
-	public boolean eliminarCliente(@Nullable Long id) {
+	public boolean eliminarCliente(@Nullable Integer id) {
 		if (id != null) {
 			if (clienteRepository.existsById(id)) {
 				clienteRepository.deleteById(id);

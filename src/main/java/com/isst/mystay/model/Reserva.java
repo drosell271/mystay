@@ -12,20 +12,20 @@ public class Reserva {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 
 	private Date fechaEntrada;
 	private Date fechaSalida;
 	private Double cuenta;
 
-	private Long clienteId;
-	private Long habitacionId;
+	private Integer clienteId;
+	private Integer habitacionId;
 
 	public Reserva() {
 	}
 
 	// Getters
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -41,16 +41,16 @@ public class Reserva {
 		return cuenta;
 	}
 
-	public Long getClienteId() {
+	public Integer getClienteId() {
 		return clienteId;
 	}
 
-	public Long getHabitacionId() {
+	public Integer getHabitacionId() {
 		return habitacionId;
 	}
 
 	// Setters
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -66,11 +66,11 @@ public class Reserva {
 		this.cuenta = cuenta;
 	}
 
-	public void setClienteId(Long clienteId) {
+	public void setClienteId(Integer clienteId) {
 		this.clienteId = clienteId;
 	}
 
-	public void setHabitacionId(Long habitacionId) {
+	public void setHabitacionId(Integer habitacionId) {
 		this.habitacionId = habitacionId;
 	}
 

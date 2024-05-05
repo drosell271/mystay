@@ -18,7 +18,6 @@ public class ServicioController {
 	public ResponseEntity<Servicio> agregarServicio(@RequestBody Servicio servicio) {
 
 		Servicio servicioGuardado = ServicioService.guardarServicio(servicio);
-		System.out.println("PMS OK");
 		if (servicioGuardado == null) {
 			return ResponseEntity.badRequest().build();
 		} else {

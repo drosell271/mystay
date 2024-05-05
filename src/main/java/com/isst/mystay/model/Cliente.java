@@ -10,7 +10,7 @@ public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 
 	private String nombre;
 	private String documento;
@@ -23,7 +23,7 @@ public class Cliente {
 	}
 
 	// Getters
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -52,7 +52,7 @@ public class Cliente {
 	}
 
 	// Setters
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

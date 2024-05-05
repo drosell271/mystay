@@ -21,9 +21,9 @@ public class Servicio {
 	private Boolean esPremium;
 	private Boolean satisfecho;
 
-	private Long reservaId;
-	private Long recursoId;
-	private Long empleadoId;
+	private Integer reservaId;
+	private Integer recursoId;
+	private Integer empleadoId;
 
 	public Servicio() {
 	}
@@ -65,15 +65,15 @@ public class Servicio {
 		return satisfecho;
 	}
 
-	public Long getIdReserva() {
+	public Integer getIdReserva() {
 		return reservaId;
 	}
 
-	public Long getIdRecurso() {
+	public Integer getIdRecurso() {
 		return recursoId;
 	}
 
-	public Long getIdEmpleado() {
+	public Integer getIdEmpleado() {
 		return empleadoId;
 	}
 
@@ -114,15 +114,15 @@ public class Servicio {
 		this.satisfecho = satisfecho;
 	}
 
-	public void setIdReserva(Long reservaId) {
+	public void setIdReserva(Integer reservaId) {
 		this.reservaId = reservaId;
 	}
 
-	public void setIdRecurso(Long recursoId) {
+	public void setIdRecurso(Integer recursoId) {
 		this.recursoId = recursoId;
 	}
 
-	public void setIdEmpleado(Long empleadoId) {
+	public void setIdEmpleado(Integer empleadoId) {
 		this.empleadoId = empleadoId;
 	}
 

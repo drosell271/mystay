@@ -30,7 +30,7 @@ public class HotelController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Hotel> obtenerHotelPorId(@PathVariable Long id) {
+	public ResponseEntity<Hotel> obtenerHotelPorId(@PathVariable Integer id) {
 		Hotel Hotel = HotelService.obtenerHotelPorId(id);
 		if (Hotel == null) {
 			return ResponseEntity.notFound().build();
@@ -41,7 +41,7 @@ public class HotelController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Hotel> actualizarHotel(@PathVariable Long id, @RequestBody Hotel HotelDetalles) {
+	public ResponseEntity<Hotel> actualizarHotel(@PathVariable Integer id, @RequestBody Hotel HotelDetalles) {
 		Hotel HotelActualizado = HotelService.actualizarHotel(id, HotelDetalles);
 		if (HotelActualizado == null) {
 			return ResponseEntity.notFound().build();
@@ -52,7 +52,7 @@ public class HotelController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> eliminarHotel(@PathVariable Long id) {
+	public ResponseEntity<?> eliminarHotel(@PathVariable Integer id) {
 		if (HotelService.eliminarHotel(id)) {
 			return ResponseEntity.ok().build();
 		} else {

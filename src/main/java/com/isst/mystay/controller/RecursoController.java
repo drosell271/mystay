@@ -30,7 +30,7 @@ public class RecursoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Recurso> obtenerRecursoPorId(@PathVariable Long id) {
+    public ResponseEntity<Recurso> obtenerRecursoPorId(@PathVariable Integer id) {
         Recurso recurso = recursoService.obtenerRecursoPorId(id);
         if (recurso == null) {
             return ResponseEntity.notFound().build();
@@ -40,7 +40,7 @@ public class RecursoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Recurso> actualizarRecurso(@PathVariable Long id, @RequestBody Recurso detallesRecurso) {
+    public ResponseEntity<Recurso> actualizarRecurso(@PathVariable Integer id, @RequestBody Recurso detallesRecurso) {
         Recurso recursoActualizado = recursoService.actualizarRecurso(id, detallesRecurso);
         if (recursoActualizado == null) {
             return ResponseEntity.notFound().build();
@@ -50,7 +50,7 @@ public class RecursoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarRecurso(@PathVariable Long id) {
+    public ResponseEntity<?> eliminarRecurso(@PathVariable Integer id) {
         if (recursoService.eliminarRecurso(id)) {
             return ResponseEntity.ok().build();
         } else {

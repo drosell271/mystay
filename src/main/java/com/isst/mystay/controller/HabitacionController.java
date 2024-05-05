@@ -27,7 +27,7 @@ public class HabitacionController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Habitacion> obtenerHabitacionPorId(@PathVariable long id) {
+    public ResponseEntity<Habitacion> obtenerHabitacionPorId(@PathVariable Integer id) {
         Habitacion habitacion = habitacionService.obtenerHabitacionPorId(id);
         if (habitacion == null) {
             return ResponseEntity.notFound().build();
@@ -36,7 +36,7 @@ public class HabitacionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Habitacion> actualizarHabitacion(@PathVariable long id,
+    public ResponseEntity<Habitacion> actualizarHabitacion(@PathVariable Integer id,
             @RequestBody Habitacion detallesHabitacion) {
         Habitacion habitacionActualizada = habitacionService.actualizarHabitacion(id, detallesHabitacion);
         if (habitacionActualizada == null) {
@@ -46,7 +46,7 @@ public class HabitacionController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarHabitacion(@PathVariable long id) {
+    public ResponseEntity<?> eliminarHabitacion(@PathVariable Integer id) {
         boolean eliminado = habitacionService.eliminarHabitacion(id);
         if (eliminado) {
             return ResponseEntity.ok().build();

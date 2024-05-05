@@ -26,7 +26,7 @@ public class HotelService {
 		return HotelRepository.findAll();
 	}
 
-	public Hotel obtenerHotelPorId(@Nullable Long id) {
+	public Hotel obtenerHotelPorId(@Nullable Integer id) {
 		if (id != null) {
 			if (HotelRepository.existsById(id)) {
 				return HotelRepository.findById(id).orElse(null);
@@ -37,7 +37,7 @@ public class HotelService {
 		return null;
 	}
 
-	public Hotel actualizarHotel(Long id, Hotel HotelDetalles) {
+	public Hotel actualizarHotel(Integer id, Hotel HotelDetalles) {
 		if (id == null || HotelDetalles == null) {
 			return null;
 		}
@@ -54,7 +54,7 @@ public class HotelService {
 		return null;
 	}
 
-	public boolean eliminarHotel(@Nullable Long id) {
+	public boolean eliminarHotel(@Nullable Integer id) {
 		if (id != null) {
 			if (HotelRepository.existsById(id)) {
 				HotelRepository.deleteById(id);

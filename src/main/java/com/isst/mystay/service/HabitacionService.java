@@ -27,12 +27,12 @@ public class HabitacionService {
         return habitacionRepository.findAll();
     }
 
-    public Habitacion obtenerHabitacionPorId(long id) {
+    public Habitacion obtenerHabitacionPorId(Integer id) {
         Optional<Habitacion> habitacion = habitacionRepository.findById(id);
         return habitacion.orElse(null);
     }
 
-    public Habitacion actualizarHabitacion(long id, Habitacion detallesHabitacion) {
+    public Habitacion actualizarHabitacion(Integer id, Habitacion detallesHabitacion) {
         Optional<Habitacion> habitacionExistente = habitacionRepository.findById(id);
 
         if (habitacionExistente.isPresent()) {
@@ -47,7 +47,7 @@ public class HabitacionService {
         return null;
     }
 
-    public boolean eliminarHabitacion(long id) {
+    public boolean eliminarHabitacion(Integer id) {
         if (habitacionRepository.existsById(id)) {
             habitacionRepository.deleteById(id);
             return true;

@@ -30,7 +30,7 @@ public class ClienteController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Cliente> obtenerClientePorId(@PathVariable Long id) {
+	public ResponseEntity<Cliente> obtenerClientePorId(@PathVariable Integer id) {
 		Cliente cliente = clienteService.obtenerClientePorId(id);
 		if (cliente == null) {
 			return ResponseEntity.notFound().build();
@@ -41,7 +41,7 @@ public class ClienteController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Cliente> actualizarCliente(@PathVariable Long id, @RequestBody Cliente clienteDetalles) {
+	public ResponseEntity<Cliente> actualizarCliente(@PathVariable Integer id, @RequestBody Cliente clienteDetalles) {
 		Cliente clienteActualizado = clienteService.actualizarCliente(id, clienteDetalles);
 		if (clienteActualizado == null) {
 			return ResponseEntity.notFound().build();
@@ -52,11 +52,12 @@ public class ClienteController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> eliminarCliente(@PathVariable Long id) {
+	public ResponseEntity<?> eliminarCliente(@PathVariable Integer id) {
 		if (clienteService.eliminarCliente(id)) {
 			return ResponseEntity.ok().build();
 		} else {
 			return ResponseEntity.notFound().build();
 		}
 	}
+
 }

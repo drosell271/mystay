@@ -26,7 +26,7 @@ public class RecursoService {
         return recursoRepository.findAll();
     }
 
-    public Recurso obtenerRecursoPorId(@Nullable Long id) {
+    public Recurso obtenerRecursoPorId(@Nullable Integer id) {
         if (id != null) {
             Optional<Recurso> recurso = recursoRepository.findById(id);
             return recurso.orElse(null);
@@ -34,7 +34,7 @@ public class RecursoService {
         return null;
     }
 
-    public Recurso actualizarRecurso(Long id, Recurso detallesRecurso) {
+    public Recurso actualizarRecurso(Integer id, Recurso detallesRecurso) {
         if (id == null || detallesRecurso == null) {
             return null;
         }
@@ -50,7 +50,7 @@ public class RecursoService {
         return null;
     }
 
-    public boolean eliminarRecurso(@Nullable Long id) {
+    public boolean eliminarRecurso(@Nullable Integer id) {
         if (id != null && recursoRepository.existsById(id)) {
             recursoRepository.deleteById(id);
             return true;

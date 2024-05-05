@@ -10,18 +10,18 @@ public class Recurso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String nombre;
-    
-    private Long hotelId; // Asumiendo que el hotelId es de tipo Long
+
+    private Integer hotelId; // Asumiendo que el hotelId es de tipo Integer
 
     // Constructor por defecto
     public Recurso() {
     }
 
     // Getters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -29,12 +29,12 @@ public class Recurso {
         return nombre;
     }
 
-    public Long getHotelId() {
+    public Integer getHotelId() {
         return hotelId;
     }
 
     // Setters
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -42,7 +42,7 @@ public class Recurso {
         this.nombre = nombre;
     }
 
-    public void setHotelId(Long hotelId) {
+    public void setHotelId(Integer hotelId) {
         this.hotelId = hotelId;
     }
 
