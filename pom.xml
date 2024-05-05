@@ -41,22 +41,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- JUnit Jupiter API, para escribir pruebas con JUnit 5 -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.7.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- JUnit Jupiter Engine, para ejecutar pruebas con JUnit 5 -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.7.0</version>
-			<scope>test</scope>
-		</dependency>
-
 		<!-- Selenium WebDriver, para interactuar con navegadores web -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
