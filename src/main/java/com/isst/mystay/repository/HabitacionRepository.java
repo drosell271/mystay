@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface HabitacionRepository extends JpaRepository<Habitacion, Integer> {
     List<Habitacion> findByHotelId(Integer hotelId);
+
+    Habitacion findFirstByTipo(String tipo);
 }

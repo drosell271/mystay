@@ -26,10 +26,10 @@ public class ReservaService {
 	private ClienteRepository clienteRepository;
 
 	@Autowired
-	private HabitacionRepository habitacionRepository;
+	private ServicioRepository servicioRepository;
 
 	@Autowired
-	private ServicioRepository servicioRepository;
+	private HabitacionRepository habitacionRepository;
 
 	public class ResultadoReserva {
 		private Integer idReserva;
@@ -89,9 +89,9 @@ public class ReservaService {
 
 	}
 
-	public Reserva guardarReserva(@Nullable Reserva Reserva) {
-		if (Reserva != null) {
-			return reservaRepository.save(Reserva);
+	public Reserva guardarReserva(@Nullable Reserva reserva) {
+		if (reserva != null) {
+			return reservaRepository.save(reserva);
 		}
 		return null;
 	}

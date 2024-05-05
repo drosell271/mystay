@@ -22,7 +22,7 @@ const Confort = () => {
 					recursoNecesario: "HABITACIONES",
 					tipoEmpleado: "HABITACIONES",
 					duracion: 2.0,
-					precio: 0.0,
+					precio: servicio == "Productos de baño" ? 5.0 : 0.0,
 					esPremium: false,
 					satisfecho: false,
 					idEmpleado: null,

@@ -17,10 +17,10 @@ public class ReservaController {
 	@Autowired
 	private ReservaService ReservaService;
 
-	@PostMapping
+	@PostMapping()
 	public ResponseEntity<Reserva> agregarReserva(@RequestBody Reserva Reserva) {
 		Reserva ReservaGuardado = ReservaService.guardarReserva(Reserva);
-		if (ReservaGuardado != null) {
+		if (ReservaGuardado == null) {
 			return ResponseEntity.notFound().build();
 		} else {
 			return ResponseEntity.ok(ReservaGuardado);
