@@ -21,8 +21,8 @@ export const NuevaReserva = () => {
 				? PrecioEstandar * numPersonas
 				: PrecioPremium * numPersonas;
 		const reservaInfo = {
-			fechaEntrada: fechaEntrada,
-			fechaSalida: fechaSalida,
+			fechaEntrada: `${fechaEntrada}T10:00:00.000+00:00`,
+			fechaSalida: `${fechaSalida}T10:00:00.000+00:00`,
 			cuenta: precio,
 			clienteId: idCliente,
 			habitacionId: 1,

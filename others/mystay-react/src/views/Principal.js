@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 
 
 export const Principal = () => {
+
+    const isPremium = localStorage.getItem("isPremium");
+
     return (
         <div>
             <div id='iconosPrincipal'>
@@ -39,12 +42,17 @@ export const Principal = () => {
                     <h2>Transporte</h2>
                 </div>
 
-
                 <div>
-                    <Link to='/premium' >
-                        <img src='../logoPremium.png' alt='PREMIUM' className='iconoMenuPrincipal' />
-                    </Link>
-                    <h2>Premium</h2>
+                    {isPremium ?
+                        <div>
+                            <Link to='/premium' >
+                                <img src='../logoPremium.png' alt='PREMIUM' className='iconoMenuPrincipal' />
+                            </Link>
+                            <h2>Premium</h2>
+                        </div>
+                        : <div></div>
+                    }
+
                 </div>
             </div>
             <Link to='/login'><Button variant='dark'>Logout</Button></Link>
