@@ -68,7 +68,7 @@ export const Login = () => {
 			<div id="datosHabitacion">
 				<div className="textoYinput">
 					<b>
-						<label for="numHabitacion">Nº de Habitación:</label>
+						<label form="numHabitacion">Nº de Habitación:</label>
 					</b>
 					<input
 						type="text"
@@ -81,7 +81,7 @@ export const Login = () => {
 				</div>
 				<div className="textoYinput">
 					<b>
-						<label for="dni-pp">DNI o Pasaporte:</label>
+						<label form="dni-pp">DNI o Pasaporte:</label>
 					</b>
 					<input
 						type="text"

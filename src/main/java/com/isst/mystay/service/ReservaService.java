@@ -84,7 +84,6 @@ public class ReservaService {
 		if (reserva == null || !reserva.getFechaSalida().after(new Date())
 				|| !reserva.getFechaEntrada().before(new Date()))
 			return Optional.empty();
-
 		return Optional.of(new ResultadoReserva(reserva.getId(), cliente.getEsPremium(), cliente.getId()));
 
 	}
@@ -145,13 +144,23 @@ public class ReservaService {
 	}
 
 	public Reserva updateReservaTotal(Integer reservaId) {
+		// Obtener la reserva existente o lanzar una excepción si no se encuentra
 		Reserva reserva = reservaRepository.findById(reservaId)
 				.orElseThrow(() -> new RuntimeException("Reserva no encontrada"));
-		double total = servicioRepository.findByReservaId(reservaId)
+
+		// Calcular el total de los servicios asociados a la reserva
+		double totalServicios = servicioRepository.findByReservaId(reservaId)
 				.stream()
 				.mapToDouble(Servicio::getPrecio)
 				.sum();
-		reserva.setCuenta(total);
+
+		// Sumar el total de los servicios al total actual de la cuenta de la reserva
+		double totalActualizado = reserva.getCuenta() + totalServicios;
+
+		// Establecer el nuevo total en la cuenta de la reserva
+		reserva.setCuenta(totalActualizado);
+
+		// Guardar y retornar la reserva actualizada
 		return reservaRepository.save(reserva);
 	}
 

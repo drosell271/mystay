@@ -31,6 +31,8 @@ public class LoginController {
 			return ResponseEntity.badRequest().body("Número de habitación no válido");
 		}
 
+		System.out.println("documento: " + documento + ", numHabitacion: " + numHabitacionStr);
+
 		Optional<ResultadoReserva> resultado = reservaService.buscarIdReservaPorDocumentoYNumeroHabitacion(documento,
 				numHabitacion);
 		return resultado.map(res -> ResponseEntity.ok().body(res))

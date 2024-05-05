@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export const Principal = () => {
 	const isPremium = localStorage.getItem("isPremium");
+	console.log(isPremium === "true");
 
 	return (
 		<div>
@@ -56,7 +57,7 @@ export const Principal = () => {
 				</div>
 
 				<div>
-					{isPremium ? (
+					{isPremium === "true" ? (
 						<div>
 							<Link to="/premium">
 								<img

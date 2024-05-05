@@ -24,7 +24,7 @@ const Confort = () => {
 					tipoEmpleado: "HABITACIONES",
 					duracion: 2.0,
 					precio: 0.0,
-					esPremium: isPremium,
+					esPremium: false,
 					satisfecho: false,
 					idEmpleado: null,
 					idRecurso: null,

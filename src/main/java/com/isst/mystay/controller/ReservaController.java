@@ -63,12 +63,6 @@ public class ReservaController {
 		}
 	}
 
-	@PutMapping("/{id}/checkout")
-	public ResponseEntity<Reserva> checkoutReserva(@PathVariable("id") Integer id) {
-		Reserva updatedReserva = ReservaService.updateReservaTotal(id);
-		return ResponseEntity.ok(updatedReserva);
-	}
-
 	@PutMapping("/{id}/late-checkout/{checkoutTime}")
 	public ResponseEntity<Reserva> lateCheckoutReserva(@PathVariable("id") Integer id,
 			@PathVariable("checkoutTime") String checkoutTime) {
