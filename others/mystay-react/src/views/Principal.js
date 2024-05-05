@@ -56,7 +56,7 @@ export const Principal = () => {
 				</div>
 
 				<div>
-					{isPremium ? (
+					{(isPremium === true) ? (
 						<div>
 							<Link to="/premium">
 								<img
