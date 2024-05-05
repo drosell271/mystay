@@ -9,6 +9,7 @@ const Confort = () => {
 		const url = "http://localhost:8080/servicios";
 
 		const idReserva = localStorage.getItem("token");
+		const isPremium = localStorage.getItem("isPremium");
 
 		try {
 			const response = await fetch(url, {
@@ -23,7 +24,7 @@ const Confort = () => {
 					tipoEmpleado: "HABITACIONES",
 					duracion: 2.0,
 					precio: 0.0,
-					esPremium: false,
+					esPremium: isPremium,
 					satisfecho: false,
 					idEmpleado: null,
 					idRecurso: null,

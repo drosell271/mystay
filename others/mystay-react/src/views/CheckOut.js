@@ -20,7 +20,14 @@ export const CheckOut = () => {
 
             <div id='despedida'>
                 <p>¡Muchas gracias por su visita! Esperamos volver a verle pronto</p>
-                <Link to='lateCheckout'><Button>Late Checkout</Button> </Link>
+                {isPremium ?
+                    <div>
+                        <Link to='lateCheckout'><Button>Late Checkout</Button> </Link>
+                    </div>
+                    :
+                    <div></div>
+                }
+
                 <Button variant='success'>Confirmar Check-Out</Button>
                 <Link to='/reservas'><Button variant='dark'>Volver</Button></Link>
             </div>
