@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom';
 
 export const Reservas = () => {
     return (
-        <div>
-            <div id='botonesReserva'>
-                <Link to='./nuevareserva'><Button variant='dark'>Nueva Reserva</Button></Link>
-                <Link to='./checkout'><Button variant='dark'>Check-Out</Button></Link>
+        <div className='ordenados'>
+            <div id='iconosReserva' className='ordenados'>
+                <Link to='./nuevareserva' className='botontr' ><img className="fotos" src="../nuevareserva.png" alt="imagennuevareserva" /></Link>
+                <h2>Nueva Reserva</h2>
+                <Link to='./checkout' className='botontr'><img className="fotos" src="../checkout.png" alt="imagencheckout" /></Link>
+                <h2>Check-Out</h2>
             </div>
             <Link to='/principal'><Button variant='dark'>Volver</Button></Link>
         </div>

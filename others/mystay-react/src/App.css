@@ -49,14 +49,6 @@ html {
   gap: 70px;
 }
 
-#botonesReserva {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  gap: 100px;
-}
 
 #recibo {
   margin-top: 50px;
@@ -126,7 +118,7 @@ input[type="text"] {
   padding: 5px;
 }
 
-#iconostransporte {
+#iconosTransporte {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-left: 20%;
@@ -135,6 +127,17 @@ input[type="text"] {
   margin-bottom: 50px;
   gap: 70px;
 }
+
+#iconosPremium {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 80px;
+  margin-bottom: 50px;
+  gap: 70px;
+}
+
 
 .botontr {
   border-radius: 50%;
@@ -145,4 +148,19 @@ input[type="text"] {
 #msgError {
   margin-bottom: 20px;
   color: red;
+}
+
+#horaCheckout {
+  font-size: 35px;
+}
+
+#concierge {
+  width: 500px;
+  height: 100px;
+}
+
+.enFila {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
 }

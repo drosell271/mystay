@@ -68,7 +68,7 @@ const Incidencias = () => {
           placeholder="Escriba aquí la incidencia"
           onChange={e => { setIncidencia(e.target.value) }}
         />
-        <Button className='enviar' variant="dark" onClick={() => gestionaIncidencias()}>Enviar</Button>
+        <Button className='enviar' variant="success" onClick={() => gestionaIncidencias()}>Enviar</Button>
         <Link to='/habitacion'><Button className='atras' variant="dark">Volver</Button></Link>
       </div>
     </div>
