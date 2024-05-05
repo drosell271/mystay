@@ -2,10 +2,18 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Principal = () => {
 	const isPremium = localStorage.getItem("isPremium");
 	console.log(isPremium === "true");
+
+	useEffect(() => {
+		const id = localStorage.getItem("token");
+		if (id === null) {
+			window.location.href = "http://localhost:8080/login";
+		}
+	}, []);
 
 	return (
 		<div>

@@ -43,10 +43,12 @@ export const Espectaculos = () => {
 				alert(
 					`Su solicitud ha sido procesada.\nSus entradas se han adquirido.`
 				);
+				window.location.href = "http://localhost:8080/principal";
 			} else {
 				alert(
 					"No se encontró el recurso solicitado o no está abierto en este momento."
 				);
+				window.location.href = "http://localhost:8080/principal";
 			}
 		} catch (error) {
 			console.log("Error al conectar con el servidor");

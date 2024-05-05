@@ -34,10 +34,12 @@ const Confort = () => {
 
 			if (response.ok) {
 				alert(`Ha solicitado: ${servicio}`);
+				window.location.href = "http://localhost:3000/principal";
 			} else {
 				alert(
 					"No se encontró el recurso solicitado o no está abierto en este momento."
 				);
+				window.location.href = "http://localhost:3000/principal";
 			}
 		} catch (error) {
 			console.log("Error al conectar con el servidor");

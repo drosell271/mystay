@@ -37,8 +37,10 @@ export const Turismo = () => {
 
 			if (response.ok) {
 				alert("Ha solicitado una visita con guía.");
+				window.location.href = "http://localhost:8080/principal";
 			} else {
 				alert("Error al concertar la visita guiada.");
+				window.location.href = "http://localhost:8080/principal";
 			}
 		} catch (error) {
 			console.log("Error al conectar con el servidor");

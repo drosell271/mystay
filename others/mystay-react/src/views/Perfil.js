@@ -45,6 +45,7 @@ const Perfil = () => {
 				setDatosPerfil(datosCliente);
 			} else {
 				console.log("Error en los datos");
+				window.location.href = "http://localhost:8080/principal";
 			}
 		} catch (error) {
 			console.log("Error al conectar con el servidor");

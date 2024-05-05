@@ -6,18 +6,21 @@ import { useState, useEffect } from "react";
 
 export const CheckOut = () => {
 	const isPremium = localStorage.getItem("isPremium");
+	const id = localStorage.getItem("token");
 
 	const [cuenta, setCuenta] = useState(0);
 
 	const handleReservation = async () => {
-
 		try {
-			const response = await fetch(`http://localhost:8080/reservas`, {
-				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-				},
-			});
+			const response = await fetch(
+				`http://localhost:8080/reservas/${id}`,
+				{
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			);
 
 			if (response.ok) {
 				const responseData = await response.json();
@@ -32,26 +35,7 @@ export const CheckOut = () => {
 	};
 
 	const handleSubmit = async () => {
-		const idReserva = localStorage.getItem("token");
-
-		const url = `http://localhost:8080/reservas/${idReserva}/checkout`;
-
-		try {
-			const response = await fetch(url, {
-				method: "PUT",
-				headers: {
-					"Content-Type": "application/json",
-				},
-			});
-
-			if (response.ok) {
-				alert(`Ha realizado el CheckOut correctamente.`);
-			} else {
-				alert("No se ha podido realizar el CheckOut");
-			}
-		} catch (error) {
-			console.log("Error al conectar con el servidor");
-		}
+		window.location.href = "http://localhost:8080/login";
 	};
 
 	useEffect(() => {
@@ -72,7 +56,7 @@ export const CheckOut = () => {
 					¡Muchas gracias por su visita! Esperamos volver a verle
 					pronto
 				</p>
-				{(isPremium === true) ? (
+				{isPremium === "true" ? (
 					<Link to="lateCheckout">
 						<Button>Late Checkout</Button>{" "}
 					</Link>
@@ -80,7 +64,9 @@ export const CheckOut = () => {
 					<div></div>
 				)}
 
-				<Button variant="success" onClick={() => handleSubmit()}>Confirmar Check-Out</Button>
+				<Button variant="success" onClick={() => handleSubmit()}>
+					Confirmar Check-Out
+				</Button>
 				<Link to="/reservas">
 					<Button variant="dark">Volver</Button>
 				</Link>

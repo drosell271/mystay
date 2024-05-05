@@ -33,13 +33,14 @@ export const Editar = () => {
 			});
 
 			if (response.ok) {
-				window.location.href = "http://localhost:3000/perfil";
+				window.location.href = "http://localhost:8080/principal";
 				const msgConfirmacion = document.getElementById("confirmacion");
 				msgConfirmacion.textContent("Datos modificados correctamente");
 				msgConfirmacion.style.display = "block";
 				msgConfirmacion.style.color = "green";
 			} else {
 				console.log("Error en los datos");
+				window.location.href = "http://localhost:8080/principal";
 			}
 		} catch (error) {
 			console.log("Error al conectar con el servidor");

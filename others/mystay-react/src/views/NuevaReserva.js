@@ -40,8 +40,10 @@ export const NuevaReserva = () => {
 			if (response.ok) {
 				const responseData = await response.json();
 				alert("Reserva confirmada!");
+				window.location.href = "http://localhost:8080/principal";
 			} else {
 				throw new Error("Algo salió mal con la petición");
+				window.location.href = "http://localhost:8080/principal";
 			}
 		} catch (error) {
 			console.error("Error al hacer la reserva:", error);
@@ -116,7 +118,10 @@ export const NuevaReserva = () => {
 							: PrecioPremium * numPersonas}{" "}
 						€
 					</h2>
-					<Button variant="success" onClick={() => handleReservation()}>
+					<Button
+						variant="success"
+						onClick={() => handleReservation()}
+					>
 						Confirmar Reserva
 					</Button>
 				</div>

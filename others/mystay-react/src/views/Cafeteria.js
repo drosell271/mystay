@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 const Cafeteria = () => {
-
 	// CONSULTA A LA API
 	const handleSubmit = async (servicio, recurso) => {
 		const url = "http://localhost:8080/servicios";
@@ -25,7 +24,7 @@ const Cafeteria = () => {
 					tipoEmpleado: "CAMARERO",
 					duracion: 3.0,
 					precio: 10.0,
-					esPremium: isPremium,
+					esPremium: false,
 					satisfecho: false,
 					idEmpleado: null,
 					idRecurso: null,
@@ -37,8 +36,12 @@ const Cafeteria = () => {
 				alert(
 					`Ha solicitado: ${servicio}\nVendrá un camarero a atenderle lo antes posible.`
 				);
+				window.location.href = "http://localhost:8080/principal";
 			} else {
-				alert("No se encontró el recurso solicitado o no está abierto en este momento.");
+				alert(
+					"No se encontró el recurso solicitado o no está abierto en este momento."
+				);
+				window.location.href = "http://localhost:8080/principal";
 			}
 		} catch (error) {
 			console.log("Error al conectar con el servidor");
