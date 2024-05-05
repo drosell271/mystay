@@ -15,7 +15,7 @@ const Transporte = () => {
     const url = "http://localhost:8080/servicios";
 
     const idReserva = localStorage.getItem("token");
-
+    const isPremium = localStorage.getItem("isPremium");
 
     try {
       const response = await fetch(url, {
@@ -30,7 +30,7 @@ const Transporte = () => {
           "tipoEmpleado": "RECEPCION",
           "duracion": 1.0,
           "precio": 10.00,
-          "esPremium": false,
+          "esPremium": isPremium,
           "satisfecho": false,
           "idEmpleado": null,
           "idRecurso": null,

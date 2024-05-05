@@ -22,6 +22,7 @@ const Incidencias = () => {
     const url = "http://localhost:8080/servicios";
 
     const idReserva = localStorage.getItem("token");
+    const isPremium = localStorage.getItem("isPremium");
 
 
     try {
@@ -37,7 +38,7 @@ const Incidencias = () => {
           "tipoEmpleado": "MANTENIMIENTO",
           "duracion": 5.0,
           "precio": 0.00,
-          "esPremium": false,
+          "esPremium": isPremium,
           "satisfecho": false,
           "idEmpleado": null,
           "idRecurso": null,
