@@ -13,12 +13,12 @@ export const CheckOut = () => {
 
         const idReserva = localStorage.getItem("token");
 
-        const url = `http://localhost:8080/reservas/${idReserva}`;
+        const url = `http://localhost:8080/reservas/${idReserva}/checkout`;
 
 
         try {
             const response = await fetch(url, {
-                method: "GET",
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
