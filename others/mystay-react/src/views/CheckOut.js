@@ -2,10 +2,18 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const CheckOut = () => {
 	const isPremium = localStorage.getItem("isPremium");
+
+	const PrecioEstandar = 60;
+	const PrecioPremium = 120;
+
+	const [tipoHabitacion, setTipoHabitacion] = useState("estandar");
+	const [numPersonas, setNumPersonas] = useState(1);
+	const [fechaEntrada, setFechaEntrada] = useState("");
+	const [fechaSalida, setFechaSalida] = useState("");
 
 	const [cuenta, setCuenta] = useState(0);
 
