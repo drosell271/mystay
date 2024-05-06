@@ -2,7 +2,6 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Transporte = () => {
 	// CONSULTA A LA API
@@ -12,7 +11,6 @@ const Transporte = () => {
 		const url = "http://localhost:8080/servicios";
 
 		const idReserva = localStorage.getItem("token");
-		const isPremium = localStorage.getItem("isPremium");
 
 		try {
 			const response = await fetch(url, {
@@ -36,17 +34,16 @@ const Transporte = () => {
 			});
 
 			if (response.ok) {
-				if (servicio !== ("Cabify" || "Uber")) {
-					alert(`Ha solicitado servicio de: ${servicio}`);
-				}
-
 				if (servicio === "Uber") {
+					console.log("Redirigiendo a Uber");
 					window.location.href = "https://www.uber.com/es/es-es/";
 				} else if (servicio === "Cabify") {
+					console.log("Redirigiendo a Cabify");
 					window.location.href = "https://cabify.com/es";
+				} else if (servicio === "Taxi") {
+					console.log("Redirigiendo a Taxi");
+					window.location.href = "http://localhost:8080/principal";
 				}
-
-				window.location.href = "http://localhost:8080/principal";
 			} else {
 				alert(
 					"No se encontró el recurso solicitado o no está abierto en este momento."
