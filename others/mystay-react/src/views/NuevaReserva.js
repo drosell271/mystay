@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const NuevaReserva = () => {
 	const PrecioEstandar = 60;
@@ -13,13 +13,29 @@ export const NuevaReserva = () => {
 	const [numPersonas, setNumPersonas] = useState(1);
 	const [fechaEntrada, setFechaEntrada] = useState("");
 	const [fechaSalida, setFechaSalida] = useState("");
+	const [diferenciaDias, setDiferenciaDias] = useState(0);
+
+	const calculaDias = () => {
+		const moment = require('moment');
+		const fecha1 = moment(fechaEntrada);
+		const fecha2 = moment(fechaSalida);
+		setDiferenciaDias(fecha2.diff(fecha1, 'days'));
+	}
+
+	useEffect(() => {
+		calculaDias(); // Call calculaDias after state updates
+	}, [fechaEntrada, fechaSalida]);
+
+
+
 
 	const handleReservation = async () => {
 		const idCliente = localStorage.getItem("clienteId");
 		const precio =
-			tipoHabitacion === "ESTANDAR"
-				? PrecioEstandar * numPersonas
-				: PrecioPremium * numPersonas;
+			tipoHabitacion === "estandar"
+				? PrecioEstandar * numPersonas * diferenciaDias
+				: PrecioPremium * numPersonas * diferenciaDias;
+
 		const reservaInfo = {
 			fechaEntrada: `${fechaEntrada}T10:00:00.000+00:00`,
 			fechaSalida: `${fechaSalida}T10:00:00.000+00:00`,
@@ -111,11 +127,12 @@ export const NuevaReserva = () => {
 				<div>
 					<h5>Habitación: {tipoHabitacion.toUpperCase()}</h5>
 					<h5>Número de personas: {numPersonas}</h5>
+					<h5>Noches: {isNaN(diferenciaDias) ? 0 : diferenciaDias}</h5>
 					<h2>
 						Precio:{" "}
-						{tipoHabitacion === "ESTANDAR"
-							? PrecioEstandar * numPersonas
-							: PrecioPremium * numPersonas}{" "}
+						{tipoHabitacion === "estandar"
+							? PrecioEstandar * numPersonas * (isNaN(diferenciaDias) ? 0 : diferenciaDias)
+							: PrecioPremium * numPersonas * (isNaN(diferenciaDias) ? 0 : diferenciaDias)}{" "}
 						€
 					</h2>
 					<Button
